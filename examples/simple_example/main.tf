@@ -21,6 +21,10 @@ provider "google" {
 module "folders" {
   source = "../.."
 
-  project_id  = "${var.project_id}"
-  bucket_name = "${var.bucket_name}"
+  parent_id   = "${var.parent_id}"
+  parent_type = "${var.parent_type}"
+  names       = "${var.names}"
+  set_roles   = true
+  per_folder_admins = "${var.per_folder_admins}"
+  all_folder_admins = "${var.all_folder_admins}"
 }

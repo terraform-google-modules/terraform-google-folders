@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
-output "bucket_name" {
-  value = "${google_storage_bucket.main.name}"
+output "names" {
+  description = "Map of name => folder resource name."
+  value       = "${zipmap(var.names, google_folder.folders.*.display_name)}"
+}
+
+output "ids" {
+  description = "Map of name => folder resource id."
+  value       = "${zipmap(var.names, google_folder.folders.*.name)}"
 }

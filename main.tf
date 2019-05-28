@@ -14,11 +14,30 @@
  * limitations under the License.
  */
 
-terraform {
-  required_version = "~> 0.11.0"
+locals {
+  num_names = "${length(var.names)}"
+  num_roles = "${length(var.folder_admin_roles)}"
+  prefix    = "${var.prefix == "" ? "" : "${var.prefix}-"}"
 }
 
-resource "google_storage_bucket" "main" {
-  project = "${var.project_id}"
-  name    = "${var.bucket_name}"
+resource "google_folder" "folders" {
+  count        = "${local.num_names}"
+  display_name = "${local.prefix}${element(var.names, count.index)}"
+  parent       = "${var.parent_type}s/${var.parent_id}"
+}
+
+# give project creation access to service accounts
+# https://cloud.google.com/resource-manager/docs/access-control-folders#granting_folder-specific_roles_to_enable_project_creation
+
+resource "google_folder_iam_binding" "owners" {
+  count  = "${var.set_roles ? local.num_names * local.num_roles : 0}"
+  folder = "${element(google_folder.folders.*.name, count.index / local.num_roles)}"
+  role   = "${element(var.folder_admin_roles, count.index % local.num_roles)}"
+
+  members = ["${
+    compact(concat(
+      split(",", element(concat(var.per_folder_admins, list("")), count.index / local.num_roles)),
+      var.all_folder_admins
+    ))
+  }"]
 }
