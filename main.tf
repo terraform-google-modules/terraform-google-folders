@@ -15,13 +15,11 @@
  */
 
 locals {
-  num_names = "${length(var.names)}"
-  num_roles = "${length(var.folder_admin_roles)}"
   prefix    = "${var.prefix == "" ? "" : "${var.prefix}-"}"
 }
 
 resource "google_folder" "folders" {
-  count        = "${local.num_names}"
+  count        = "${length(var.names)}"
   display_name = "${local.prefix}${element(var.names, count.index)}"
   parent       = "${var.parent_type}s/${var.parent_id}"
 }
@@ -30,13 +28,13 @@ resource "google_folder" "folders" {
 # https://cloud.google.com/resource-manager/docs/access-control-folders#granting_folder-specific_roles_to_enable_project_creation
 
 resource "google_folder_iam_binding" "owners" {
-  count  = "${var.set_roles ? local.num_names * local.num_roles : 0}"
-  folder = "${element(google_folder.folders.*.name, count.index / local.num_roles)}"
-  role   = "${element(var.folder_admin_roles, count.index % local.num_roles)}"
+  count  = "${var.set_roles ? length(var.names) * length(var.folder_admin_roles) : 0}"
+  folder = "${element(google_folder.folders.*.name, count.index / length(var.folder_admin_roles))}"
+  role   = "${element(var.folder_admin_roles, count.index % length(var.folder_admin_roles))}"
 
   members = ["${
     compact(concat(
-      split(",", element(concat(var.per_folder_admins, list("")), count.index / local.num_roles)),
+      split(",", element(concat(var.per_folder_admins, list("")), count.index / length(var.folder_admin_roles))),
       var.all_folder_admins
     ))
   }"]
