@@ -16,24 +16,35 @@
 
 variable "parent_id" {
   description = "Id of the resource under which the folder will be placed."
+  default = "65552901371"
 }
 
 variable "parent_type" {
   description = "Type of the parent reosurce, defaults to organization."
-  default     = "organization"
+  default     = "folder"
 }
 
 variable "names" {
   description = "Folder names."
-  default     = []
+  default     = [
+    "dev",
+    "staging",
+    "production",
+  ]
 }
 
 variable "per_folder_admins" {
   description = "List of comma delimited IAM-style members per folder who will get extended permissions."
-  default     = []
+  default     = [
+    "group:gcp-ddt-developers@apszaz.com",
+    "group:gcp-ddt-qa@apszaz.com",
+    "group:gcp-ddt-ops@apszaz.com",
+  ]
 }
 
 variable "all_folder_admins" {
   description = "List of comma delimited IAM-style members that will get the extended permissions across all the folders."
-  default     = []
+  default     = [
+    "group:gcp-global-cicd@apszaz.com",
+  ]
 }

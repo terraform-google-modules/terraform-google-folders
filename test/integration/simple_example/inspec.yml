@@ -7,30 +7,12 @@ attributes:
   - name: parent_id
     required: true
     type: string
-  - name: parent_type
+  - name: names
     required: true
-    type: string
-  - name: folder_name_1
+    type: array
+  - name: ids
     required: true
-    type: string
-  - name: folder_name_2
+    type: hash
+  - name: per_folder_admins
     required: true
-    type: string
-  - name: folder_name_3
-    required: true
-    type: string
-  - name: admin_folder_1
-    required: true
-    type: string
-  - name: admin_folder_2
-    required: true
-    type: string
-  - name: admin_folder_3
-    required: true
-    type: string
-  - name: global_admin_1
-    required: true
-    type: string
-  - name: global_admin_2
-    required: true
-    type: string
+    type: array
