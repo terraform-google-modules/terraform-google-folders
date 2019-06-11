@@ -8,11 +8,11 @@ This example illustrates how to use the `folders` module.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| all\_folder\_admins | List of comma delimited IAM-style members that will get the extended permissions across all the folders. | list | `<list>` | no |
+| all\_folder\_admins | List of IAM-style members that will get the extended permissions across all the folders. | list | `<list>` | no |
 | names | Folder names. | list | `<list>` | no |
 | parent\_id | Id of the resource under which the folder will be placed. | string | n/a | yes |
 | parent\_type | Type of the parent reosurce, defaults to organization. | string | `"organization"` | no |
-| per\_folder\_admins | List of comma delimited IAM-style members per folder who will get extended permissions. | list | `<list>` | no |
+| per\_folder\_admins | List of IAM-style members per folder who will get extended permissions. | list | `<list>` | no |
 
 ## Outputs
 

@@ -24,10 +24,10 @@ control "gcloud" do
   end
 
   folder_names = attribute("names")
-  folder_ids   = attribute("ids")
+  folder_names_and_ids   = attribute("names_and_ids")
   per_folder_admins = attribute("per_folder_admins")
 
-  folder_id = folder_ids[folder_names[0]]
+  folder_id = folder_names_and_ids[folder_names[0]]
   folder_admin = per_folder_admins[0]
   describe command("gcloud alpha resource-manager folders get-iam-policy #{folder_id}") do
     its(:exit_status) { should eq 0 }
@@ -36,7 +36,7 @@ control "gcloud" do
   end
 
 
-  folder_id = folder_ids[folder_names[1]]
+  folder_id = folder_names_and_ids[folder_names[1]]
   folder_admin = per_folder_admins[1]
   describe command("gcloud alpha resource-manager folders get-iam-policy #{folder_id}") do
     its(:exit_status) { should eq 0 }
@@ -44,7 +44,7 @@ control "gcloud" do
     its(:stdout) { should include "#{attribute("per_folder_admins")[1]}" }
   end
 
-  folder_id = folder_ids[folder_names[2]]
+  folder_id = folder_names_and_ids[folder_names[2]]
   folder_admin = per_folder_admins[2]
   describe command("gcloud alpha resource-manager folders get-iam-policy #{folder_id}") do
     its(:exit_status) { should eq 0 }

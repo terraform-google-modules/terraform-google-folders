@@ -49,12 +49,12 @@ Functional examples are included in the
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| all\_folder\_admins | List of comma delimited IAM-style members that will get the extended permissions across all the folders. | list | `<list>` | no |
+| all\_folder\_admins | List of IAM-style members that will get the extended permissions across all the folders. | list | `<list>` | no |
 | folder\_admin\_roles | List of roles that will be applied to per folder owners on their respective folder. | list | `<list>` | no |
 | names | Folder names. | list | `<list>` | no |
 | parent\_id | Id of the resource under which the folder will be placed. | string | n/a | yes |
 | parent\_type | Type of the parent reosurce, defaults to organization. | string | `"organization"` | no |
-| per\_folder\_admins | List of comma delimited IAM-style members per folder who will get extended permissions. | list | `<list>` | no |
+| per\_folder\_admins | List of IAM-style members per folder who will get extended permissions. | list | `<list>` | no |
 | prefix | Optional prefix to enforce uniqueness of folder names. | string | `""` | no |
 | set\_roles | Set roles to actors passed in role_members variable. | string | `"false"` | no |
 

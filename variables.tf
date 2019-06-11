@@ -34,12 +34,12 @@ variable "set_roles" {
 }
 
 variable "per_folder_admins" {
-  description = "List of comma delimited IAM-style members per folder who will get extended permissions."
+  description = "List of IAM-style members per folder who will get extended permissions."
   default     = []
 }
 
 variable "all_folder_admins" {
-  description = "List of comma delimited IAM-style members that will get the extended permissions across all the folders."
+  description = "List of IAM-style members that will get the extended permissions across all the folders."
   default     = []
 }
 

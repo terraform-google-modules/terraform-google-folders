@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-output "ids" {
+output "names_and_ids" {
   description = "Map of name => folder resource id."
-  value       = "${module.example.ids}"
+  value       = "${module.example.names_and_ids}"
 }
 
 output "parent_id" {
@@ -35,11 +35,11 @@ output "names" {
 }
 
 output "per_folder_admins" {
-  description = "List of comma delimited IAM-style members per folder who will get extended permissions."
+  description = "List of IAM-style members per folder who will get extended permissions."
   value = "${var.per_folder_admins}"
 }
 
 output "all_folder_admins" {
-  description = "List of comma delimited IAM-style members that will get the extended permissions across all the folders."
+  description = "List of IAM-style members that will get the extended permissions across all the folders."
   value = "${var.all_folder_admins}"
 }

@@ -34,7 +34,7 @@ variable "names" {
 }
 
 variable "per_folder_admins" {
-  description = "List of comma delimited IAM-style members per folder who will get extended permissions."
+  description = "List of IAM-style members per folder who will get extended permissions."
   default     = [
     "group:gcp-ddt-developers@apszaz.com",
     "group:gcp-ddt-qa@apszaz.com",
@@ -43,7 +43,7 @@ variable "per_folder_admins" {
 }
 
 variable "all_folder_admins" {
-  description = "List of comma delimited IAM-style members that will get the extended permissions across all the folders."
+  description = "List of IAM-style members that will get the extended permissions across all the folders."
   default     = [
     "group:gcp-global-cicd@apszaz.com",
   ]

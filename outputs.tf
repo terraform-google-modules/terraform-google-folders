@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-output "names" {
+output "names_and_display_names" {
   description = "Map of name => folder resource name."
   value       = "${zipmap(var.names, google_folder.folders.*.display_name)}"
 }
 
-output "ids" {
+output "names_and_ids" {
   description = "Map of name => folder resource id."
   value       = "${zipmap(var.names, google_folder.folders.*.name)}"
 }

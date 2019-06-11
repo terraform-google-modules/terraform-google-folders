@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-output "ids" {
+output "names_and_ids" {
   description = "Map of name => folder resource id."
-  value       = "${module.folders.ids}"
+  value       = "${module.folders.names_and_ids}"
 }
