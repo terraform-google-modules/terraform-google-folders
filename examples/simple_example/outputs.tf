@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-output "bucket_name" {
-  description = "The name of the bucket."
-  value       = "${module.folders.bucket_name}"
+output "names_and_ids" {
+  description = "Map of name => folder resource id."
+  value       = "${module.folders.names_and_ids}"
 }

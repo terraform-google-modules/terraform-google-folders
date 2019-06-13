@@ -18,15 +18,11 @@ provider "random" {
   version = "~> 2.0"
 }
 
-resource "random_pet" "main" {
-  length    = 1
-  prefix    = "simple-example"
-  separator = "-"
-}
-
 module "example" {
   source = "../../../examples/simple_example"
 
-  project_id  = "${var.project_id}"
-  bucket_name = "${random_pet.main.id}"
+  parent_id   = "${var.parent_id}"
+  names       = "${var.names}"
+  per_folder_admins = "${var.per_folder_admins}"
+  all_folder_admins = "${var.all_folder_admins}"
 }

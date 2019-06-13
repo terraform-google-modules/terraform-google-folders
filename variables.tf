@@ -14,10 +14,47 @@
  * limitations under the License.
  */
 
-variable "project_id" {
-  description = "The project ID to deploy to"
+variable "parent_id" {
+  description = "Id of the resource under which the folder will be placed."
 }
 
-variable "bucket_name" {
-  description = "The name of the bucket to create"
+variable "parent_type" {
+  description = "Type of the parent reosurce, defaults to organization."
+  default     = "organization"
+}
+
+variable "names" {
+  description = "Folder names."
+  default     = []
+}
+
+variable "set_roles" {
+  description = "Set roles to actors passed in role_members variable."
+  default     = false
+}
+
+variable "per_folder_admins" {
+  description = "List of IAM-style members per folder who will get extended permissions."
+  default     = []
+}
+
+variable "all_folder_admins" {
+  description = "List of IAM-style members that will get the extended permissions across all the folders."
+  default     = []
+}
+
+variable "prefix" {
+  description = "Optional prefix to enforce uniqueness of folder names."
+  default     = ""
+}
+
+variable "folder_admin_roles" {
+  description = "List of roles that will be applied to per folder owners on their respective folder."
+
+  default = [
+    "roles/owner",
+    "roles/resourcemanager.folderViewer",
+    "roles/resourcemanager.projectCreator",
+    "roles/compute.networkAdmin",
+  ]
 }

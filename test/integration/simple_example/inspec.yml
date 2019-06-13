@@ -4,9 +4,15 @@ depends:
     git: https://github.com/inspec/inspec-gcp.git
     tag: v0.10.0
 attributes:
-  - name: project_id
+  - name: parent_id
     required: true
     type: string
-  - name: bucket_name
+  - name: names
     required: true
-    type: string
+    type: array
+  - name: names_and_ids
+    required: true
+    type: hash
+  - name: per_folder_admins
+    required: true
+    type: array

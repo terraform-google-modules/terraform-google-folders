@@ -14,12 +14,32 @@
  * limitations under the License.
  */
 
-output "bucket_name" {
-  description = "The name of the bucket."
-  value       = "${module.example.bucket_name}"
+output "names_and_ids" {
+  description = "Map of name => folder resource id."
+  value       = "${module.example.names_and_ids}"
 }
 
-output "project_id" {
-  description = "The ID of the project in which resources are provisioned."
-  value       = "${var.project_id}"
+output "parent_id" {
+  description = "Id of the resource under which the folder will be placed."
+  value = "${var.parent_id}"
+}
+
+output "parent_type" {
+  description = "Type of the parent reosurce, defaults to organization."
+  value = "${var.parent_type}"
+}
+
+output "names" {
+  description = "Folder names."
+  value = "${var.names}"
+}
+
+output "per_folder_admins" {
+  description = "List of IAM-style members per folder who will get extended permissions."
+  value = "${var.per_folder_admins}"
+}
+
+output "all_folder_admins" {
+  description = "List of IAM-style members that will get the extended permissions across all the folders."
+  value = "${var.all_folder_admins}"
 }

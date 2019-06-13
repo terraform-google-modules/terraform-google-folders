@@ -15,9 +15,41 @@
 control "gcloud" do
   title "gcloud"
 
-  describe command("gcloud --project=#{attribute("project_id")} services list --enabled") do
+  describe command("gcloud resource-manager folders list --folder=#{attribute("parent_id")}") do
     its(:exit_status) { should eq 0 }
     its(:stderr) { should eq "" }
-    its(:stdout) { should match "storage-api.googleapis.com" }
+    its(:stdout) { should include "#{attribute("names")[0]}" }
+    its(:stdout) { should include "#{attribute("names")[1]}" }
+    its(:stdout) { should include "#{attribute("names")[2]}" }
   end
+
+  folder_names = attribute("names")
+  folder_names_and_ids   = attribute("names_and_ids")
+  per_folder_admins = attribute("per_folder_admins")
+
+  folder_id = folder_names_and_ids[folder_names[0]]
+  folder_admin = per_folder_admins[0]
+  describe command("gcloud alpha resource-manager folders get-iam-policy #{folder_id}") do
+    its(:exit_status) { should eq 0 }
+    its(:stderr) { should eq "" }
+    its(:stdout) { should include "#{attribute("per_folder_admins")[0]}" }
+  end
+
+
+  folder_id = folder_names_and_ids[folder_names[1]]
+  folder_admin = per_folder_admins[1]
+  describe command("gcloud alpha resource-manager folders get-iam-policy #{folder_id}") do
+    its(:exit_status) { should eq 0 }
+    its(:stderr) { should eq "" }
+    its(:stdout) { should include "#{attribute("per_folder_admins")[1]}" }
+  end
+
+  folder_id = folder_names_and_ids[folder_names[2]]
+  folder_admin = per_folder_admins[2]
+  describe command("gcloud alpha resource-manager folders get-iam-policy #{folder_id}") do
+    its(:exit_status) { should eq 0 }
+    its(:stderr) { should eq "" }
+    its(:stdout) { should include "#{attribute("per_folder_admins")[2]}" }
+  end
+
 end
