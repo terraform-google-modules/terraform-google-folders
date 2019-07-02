@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-output "names_and_ids" {
-  description = "Map of name => folder resource id."
-  value       = module.folders.names_and_ids
+terraform {
+  required_version = ">= 0.12"
 }
-

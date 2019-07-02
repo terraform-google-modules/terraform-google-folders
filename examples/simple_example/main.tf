@@ -15,16 +15,17 @@
  */
 
 provider "google" {
-  version = "~> 2.0"
+  version = "~> 2.7"
 }
 
 module "folders" {
   source = "../.."
 
-  parent_id   = "${var.parent_id}"
-  parent_type = "${var.parent_type}"
-  names       = "${var.names}"
-  set_roles   = true
-  per_folder_admins = "${var.per_folder_admins}"
-  all_folder_admins = "${var.all_folder_admins}"
+  parent_id         = var.parent_id
+  parent_type       = var.parent_type
+  names             = var.names
+  set_roles         = true
+  per_folder_admins = var.per_folder_admins
+  all_folder_admins = var.all_folder_admins
 }
+
