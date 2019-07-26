@@ -9,7 +9,9 @@ and this project adheres to
 
 ## [Unreleased]
 
-### CHANGED
+## [1.0.0] - 2019-07-26
+
+### Changed
 
 - Upgraded for usage with terraform-0.12.x [#3]
 
@@ -19,6 +21,7 @@ and this project adheres to
 
 - Initial release
 
-[Unreleased]: https://github.com/terraform-google-modules/terraform-google-folders/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/terraform-google-modules/terraform-google-folders/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/terraform-google-modules/terraform-google-folders/compare/v0.1.0...v1.0.0
 [0.1.0]: https://github.com/terraform-google-modules/terraform-google-folders/releases/tag/v0.1.0
 [#3]: https://github.com/terraform-google-modules/terraform-google-folders/pull/3
