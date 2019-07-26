@@ -16,30 +16,31 @@
 
 output "names_and_ids" {
   description = "Map of name => folder resource id."
-  value       = "${module.example.names_and_ids}"
+  value       = module.example.names_and_ids
 }
 
 output "parent_id" {
   description = "Id of the resource under which the folder will be placed."
-  value = "${var.parent_id}"
+  value       = var.parent_id
 }
 
 output "parent_type" {
   description = "Type of the parent reosurce, defaults to organization."
-  value = "${var.parent_type}"
+  value       = var.parent_type
 }
 
 output "names" {
   description = "Folder names."
-  value = "${var.names}"
+  value       = var.names
 }
 
 output "per_folder_admins" {
   description = "List of IAM-style members per folder who will get extended permissions."
-  value = "${var.per_folder_admins}"
+  value       = var.per_folder_admins
 }
 
 output "all_folder_admins" {
   description = "List of IAM-style members that will get the extended permissions across all the folders."
-  value = "${var.all_folder_admins}"
+  value       = var.all_folder_admins
 }
+

@@ -7,6 +7,13 @@ The resources/services/activations/deletions that this module will create/trigge
 - Create folders with the provided names
 - Assign the defined permissions to the provided list of users or groups.
 
+## Compatibility
+
+ This module is meant for use with Terraform 0.12. If you haven't [upgraded](https://www.terraform.io/upgrade-guides/0-12.html)
+  and need a Terraform 0.11.x-compatible version of this module, the last released version intended for
+  Terraform 0.11.x is [0.1.0](https://registry.terraform.io/modules/terraform-google-modules/folders/google/0.1.0).
+
+
 ## Usage
 
 Basic usage of this module is as follows:
@@ -75,7 +82,7 @@ These sections describe requirements for using this module.
 
 The following dependencies must be available:
 
-- [Terraform][terraform] v0.11
+- [Terraform][terraform] v0.12
 - [Terraform Provider for GCP][terraform-provider-gcp] plugin v2.0
 
 ### Service Account

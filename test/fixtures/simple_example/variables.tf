@@ -15,18 +15,20 @@
  */
 
 variable "parent_id" {
+  type        = string
   description = "Id of the resource under which the folder will be placed."
-  default = "65552901371"
 }
 
 variable "parent_type" {
+  type        = string
   description = "Type of the parent reosurce, defaults to organization."
   default     = "folder"
 }
 
 variable "names" {
+  type        = list(string)
   description = "Folder names."
-  default     = [
+  default = [
     "dev",
     "staging",
     "production",
@@ -34,8 +36,9 @@ variable "names" {
 }
 
 variable "per_folder_admins" {
+  type        = list(string)
   description = "List of IAM-style members per folder who will get extended permissions."
-  default     = [
+  default = [
     "group:gcp-ddt-developers@apszaz.com",
     "group:gcp-ddt-qa@apszaz.com",
     "group:gcp-ddt-ops@apszaz.com",
@@ -43,8 +46,10 @@ variable "per_folder_admins" {
 }
 
 variable "all_folder_admins" {
+  type        = list(string)
   description = "List of IAM-style members that will get the extended permissions across all the folders."
-  default     = [
+  default = [
     "group:gcp-global-cicd@apszaz.com",
   ]
 }
+

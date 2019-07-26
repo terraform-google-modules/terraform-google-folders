@@ -15,15 +15,15 @@
  */
 
 terraform {
-  required_version = "~> 0.11.0"
+  required_version = ">= 0.12"
 }
 
 locals {
-  prefix    = "${var.prefix == "" ? "" : "${var.prefix}-"}"
+  prefix = var.prefix == "" ? "" : "${var.prefix}-"
 }
 
 resource "google_folder" "folders" {
-  count        = "${length(var.names)}"
+  count        = length(var.names)
   display_name = "${local.prefix}${element(var.names, count.index)}"
   parent       = "${var.parent_type}s/${var.parent_id}"
 }
@@ -32,14 +32,16 @@ resource "google_folder" "folders" {
 # https://cloud.google.com/resource-manager/docs/access-control-folders#granting_folder-specific_roles_to_enable_project_creation
 
 resource "google_folder_iam_binding" "owners" {
-  count  = "${var.set_roles ? length(var.names) * length(var.folder_admin_roles) : 0}"
-  folder = "${element(google_folder.folders.*.name, count.index / length(var.folder_admin_roles))}"
-  role   = "${element(var.folder_admin_roles, count.index % length(var.folder_admin_roles))}"
+  count = var.set_roles ? length(var.names) * length(var.folder_admin_roles) : 0
+  folder = google_folder.folders[floor(count.index / length(var.folder_admin_roles))].name
+  role = var.folder_admin_roles[count.index % length(var.folder_admin_roles)]
 
-  members = ["${
-    compact(concat(
-      split(",", element(concat(var.per_folder_admins, list("")), count.index / length(var.folder_admin_roles))),
-      var.all_folder_admins
-    ))
-  }"]
+  members = compact(
+              concat(
+                split(",",
+                  concat(var.per_folder_admins, [""])[floor(count.index / length(var.folder_admin_roles))],
+                ), var.all_folder_admins,
+              ),
+            )
 }
+
