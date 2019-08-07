@@ -23,8 +23,7 @@ module "folders" {
   source  = "terraform-google-modules/folders/google"
   version = "~> 0.1"
 
-  parent_id   = "65552901371"
-  parent_type = "folder"
+  parent  = "folders/65552901371"
 
   names = [
     "dev",
@@ -59,8 +58,7 @@ Functional examples are included in the
 | all\_folder\_admins | List of IAM-style members that will get the extended permissions across all the folders. | list | `<list>` | no |
 | folder\_admin\_roles | List of roles that will be applied to per folder owners on their respective folder. | list | `<list>` | no |
 | names | Folder names. | list | `<list>` | no |
-| parent\_id | Id of the resource under which the folder will be placed. | string | n/a | yes |
-| parent\_type | Type of the parent reosurce, defaults to organization. | string | `"organization"` | no |
+| parent | Path of the resource under which the folder will be placed (eg folders/12345). | string | `""` | no |
 | per\_folder\_admins | List of IAM-style members per folder who will get extended permissions. | list | `<list>` | no |
 | prefix | Optional prefix to enforce uniqueness of folder names. | string | `""` | no |
 | set\_roles | Set roles to actors passed in role_members variable. | string | `"false"` | no |

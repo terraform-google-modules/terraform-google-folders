@@ -21,12 +21,7 @@ output "names_and_ids" {
 
 output "parent_id" {
   description = "Id of the resource under which the folder will be placed."
-  value       = var.parent_id
-}
-
-output "parent_type" {
-  description = "Type of the parent reosurce, defaults to organization."
-  value       = var.parent_type
+  value       = element(split("/", var.parent), 1)
 }
 
 output "names" {

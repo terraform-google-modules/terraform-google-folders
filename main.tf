@@ -25,23 +25,23 @@ locals {
 resource "google_folder" "folders" {
   count        = length(var.names)
   display_name = "${local.prefix}${element(var.names, count.index)}"
-  parent       = "${var.parent_type}s/${var.parent_id}"
+  parent       = var.parent
 }
 
 # give project creation access to service accounts
 # https://cloud.google.com/resource-manager/docs/access-control-folders#granting_folder-specific_roles_to_enable_project_creation
 
 resource "google_folder_iam_binding" "owners" {
-  count = var.set_roles ? length(var.names) * length(var.folder_admin_roles) : 0
+  count  = var.set_roles ? length(var.names) * length(var.folder_admin_roles) : 0
   folder = google_folder.folders[floor(count.index / length(var.folder_admin_roles))].name
-  role = var.folder_admin_roles[count.index % length(var.folder_admin_roles)]
+  role   = var.folder_admin_roles[count.index % length(var.folder_admin_roles)]
 
   members = compact(
-              concat(
-                split(",",
-                  concat(var.per_folder_admins, [""])[floor(count.index / length(var.folder_admin_roles))],
-                ), var.all_folder_admins,
-              ),
-            )
+    concat(
+      split(",",
+        concat(var.per_folder_admins, [""])[floor(count.index / length(var.folder_admin_roles))],
+      ), var.all_folder_admins,
+    ),
+  )
 }
 
