@@ -21,9 +21,9 @@ Basic usage of this module is as follows:
 ```hcl
 module "folders" {
   source  = "terraform-google-modules/folders/google"
-  version = "> 1.0.0"
+  version = "~> 0.1"
 
-  parent  = "folders/65552901371"
+  parent_id  = "65552901371"
 
   names = [
     "dev",
@@ -49,28 +49,27 @@ module "folders" {
 Functional examples are included in the
 [examples](./examples/) directory.
 
-[^]: (autogen_docs_start)
-
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| all\_folder\_admins | List of IAM-style members that will get the extended permissions across all the folders. | list | `<list>` | no |
-| folder\_admin\_roles | List of roles that will be applied to per folder owners on their respective folder. | list | `<list>` | no |
-| names | Folder names. | list | `<list>` | no |
-| parent | IThe resource name of the parent Folder or Organization. Must be of the form folders/folder_id or organizations/org_id | string | n/a | yes |
-| per\_folder\_admins | List of IAM-style members per folder who will get extended permissions. | list | `<list>` | no |
+| all\_folder\_admins | List of IAM-style members that will get the extended permissions across all the folders. | list(string) | `<list>` | no |
+| folder\_admin\_roles | List of roles that will be applied to per folder owners on their respective folder. | list(string) | `<list>` | no |
+| names | Folder names. | list(string) | `<list>` | no |
+| parent | The resource name of the parent Folder or Organization. Must be of the form folders/folder_id or organizations/org_id | string | n/a | yes |
+| per\_folder\_admins | List of IAM-style members per folder who will get extended permissions. | list(string) | `<list>` | no |
 | prefix | Optional prefix to enforce uniqueness of folder names. | string | `""` | no |
-| set\_roles | Set roles to actors passed in role_members variable. | string | `"false"` | no |
+| set\_roles | Set roles to actors passed in role_members variable. | bool | `"false"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| ids | Map of name => folder resource id. |
-| names | Map of name => folder resource name. |
+| names\_and\_display\_names | Map of name => folder resource name. |
+| names\_and\_ids | Map of name => folder resource id. |
 
-[^]: (autogen_docs_end)
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Requirements
 

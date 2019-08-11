@@ -2,25 +2,24 @@
 
 This example illustrates how to use the `folders` module.
 
-[^]: (autogen_docs_start)
-
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| all\_folder\_admins | List of IAM-style members that will get the extended permissions across all the folders. | list | `<list>` | no |
-| names | Folder names. | list | `<list>` | no |
+| all\_folder\_admins | List of IAM-style members that will get the extended permissions across all the folders. | list(string) | `<list>` | no |
+| names | Folder names. | list(string) | `<list>` | no |
 | parent\_id | Id of the resource under which the folder will be placed. | string | n/a | yes |
-| parent\_type | Type of the parent reosurce, defaults to organization. | string | `"organization"` | no |
-| per\_folder\_admins | List of IAM-style members per folder who will get extended permissions. | list | `<list>` | no |
+| parent\_type | Type of the parent reosurce, defaults to organization. | string | `"folders"` | no |
+| per\_folder\_admins | List of IAM-style members per folder who will get extended permissions. | list(string) | `<list>` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| ids | Map of name => folder resource id. |
+| names\_and\_ids | Map of name => folder resource id. |
 
-[^]: (autogen_docs_end)
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 To provision this example, run the following from within this directory:
 - `terraform init` to get the plugins
