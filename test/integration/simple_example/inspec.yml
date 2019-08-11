@@ -4,7 +4,7 @@ depends:
     git: https://github.com/inspec/inspec-gcp.git
     tag: v0.10.0
 attributes:
-  - name: parent
+  - name: parent_id
     required: true
     type: string
   - name: names

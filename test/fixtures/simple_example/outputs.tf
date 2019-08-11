@@ -19,9 +19,14 @@ output "names_and_ids" {
   value       = module.example.names_and_ids
 }
 
-output "parent" {
-  description = "The resource name of the parent Folder or Organization. Must be of the form folders/folder_id or organizations/org_id"
-  value       = var.parent
+output "parent_id" {
+  description = "Id of the resource under which the folder will be placed."
+  value       = var.parent_id
+}
+
+output "parent_type" {
+  description = "Type of the parent reosurce, defaults to organization."
+  value       = var.parent_type
 }
 
 output "names" {

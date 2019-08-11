@@ -21,7 +21,7 @@ provider "google" {
 module "folders" {
   source = "../.."
 
-  parent            = var.parent
+  parent            = "${var.parent_type}/${var.parent_id}"
   names             = var.names
   set_roles         = true
   per_folder_admins = var.per_folder_admins

@@ -15,7 +15,7 @@
 control "gcloud" do
   title "gcloud"
 
-  describe command("gcloud resource-manager folders list --folder=#{attribute("parent").split('/')[1]}") do
+  describe command("gcloud resource-manager folders list --folder=#{attribute("parent_id")}") do
     its(:exit_status) { should eq 0 }
     its(:stderr) { should eq "" }
     its(:stdout) { should include "#{attribute("names")[0]}" }
