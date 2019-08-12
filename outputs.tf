@@ -14,13 +14,27 @@
  * limitations under the License.
  */
 
-output "names_and_display_names" {
-  description = "Map of name => folder resource name."
-  value       = zipmap(var.names, google_folder.folders.*.display_name)
+output "folders" {
+  description = "Folder resources."
+  value       = google_folder.folders
 }
 
-output "names_and_ids" {
-  description = "Map of name => folder resource id."
-  value       = zipmap(var.names, google_folder.folders.*.name)
+output "id" {
+  description = "Folder id (single-use case)."
+  value       = google_folder.folders[0].name
 }
 
+output "ids" {
+  description = "Folder ids."
+  value       = google_folder.folders[*].name
+}
+
+output "name" {
+  description = "Folder name (single-use case)."
+  value       = google_folder.folders[0].display_name
+}
+
+output "names" {
+  description = "Folder names."
+  value       = google_folder.folders[*].display_name
+}
