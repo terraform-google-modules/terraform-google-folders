@@ -10,9 +10,9 @@ attributes:
   - name: names
     required: true
     type: array
-  - name: names_and_ids
+  - name: ids
     required: true
-    type: hash
+    type: array
   - name: per_folder_admins
     required: true
     type: array
