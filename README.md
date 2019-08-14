@@ -21,9 +21,9 @@ Basic usage of this module is as follows:
 ```hcl
 module "folders" {
   source  = "terraform-google-modules/folders/google"
-  version = "~> 0.1"
+  version = "~> 2.0"
 
-  parent_id  = "65552901371"
+  parent  = "folders/65552901371"
 
   names = [
     "dev",
