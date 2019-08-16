@@ -17,7 +17,9 @@ This example illustrates how to use the `folders` module.
 
 | Name | Description |
 |------|-------------|
-| names\_and\_ids | Map of name => folder resource id. |
+| ids | Folder ids. |
+| ids\_list | List of folder ids. |
+| names | Folder names. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
