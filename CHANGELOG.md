@@ -9,6 +9,15 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.0.0] - 2019-08-16
+
+### Changed
+
+- Change outputs to follow the same conventions used in the `cloud-storage` and `service-accounts` modules []
+  - Add resource, single-use and list outputs
+  - Rename map outputs dropping the `names_and_` prefix
+  - Rename `display_names` output to `names`
+
 ## [1.0.0] - 2019-07-26
 
 ### Changed

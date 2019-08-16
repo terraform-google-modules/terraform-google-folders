@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-output "ids" {
-  description = "Folder ids."
-  value       = module.example.ids
-}
-
 output "names" {
   description = "Folder names."
   value       = module.example.names
+}
+
+output "ids_list" {
+  description = "List of folder ids."
+  value       = module.example.ids_list
 }
 
 output "parent_id" {
