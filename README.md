@@ -50,29 +50,34 @@ module "folders" {
 Functional examples are included in the
 [examples](./examples/) directory.
 
-[^]: (autogen_docs_start)
-
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| all\_folder\_admins | List of IAM-style members that will get the extended permissions across all the folders. | list | `<list>` | no |
-| folder\_admin\_roles | List of roles that will be applied to per folder owners on their respective folder. | list | `<list>` | no |
-| names | Folder names. | list | `<list>` | no |
+| all\_folder\_admins | List of IAM-style members that will get the extended permissions across all the folders. | list(string) | `<list>` | no |
+| folder\_admin\_roles | List of roles that will be applied to per folder owners on their respective folder. | list(string) | `<list>` | no |
+| names | Folder names. | list(string) | `<list>` | no |
 | parent\_id | Id of the resource under which the folder will be placed. | string | n/a | yes |
 | parent\_type | Type of the parent reosurce, defaults to organization. | string | `"organization"` | no |
-| per\_folder\_admins | List of IAM-style members per folder who will get extended permissions. | list | `<list>` | no |
+| per\_folder\_admins | List of IAM-style members per folder who will get extended permissions. | list(string) | `<list>` | no |
 | prefix | Optional prefix to enforce uniqueness of folder names. | string | `""` | no |
-| set\_roles | Set roles to actors passed in role_members variable. | string | `"false"` | no |
+| set\_roles | Set roles to actors passed in role_members variable. | bool | `"false"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| ids | Map of name => folder resource id. |
-| names | Map of name => folder resource name. |
+| folder | Folder resource (for single use). |
+| folders | Folder resources. |
+| id | Folder id (for single use). |
+| ids | Folder ids. |
+| ids\_list | List of folder ids. |
+| name | Folder name (for single use). |
+| names | Folder names. |
+| names\_list | List of folder names. |
 
-[^]: (autogen_docs_end)
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Requirements
 
