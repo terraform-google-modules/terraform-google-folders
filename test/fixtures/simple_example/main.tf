@@ -22,6 +22,7 @@ module "example" {
   source = "../../../examples/simple_example"
 
   parent_id         = var.parent_id
+  parent_type       = var.parent_type
   names             = var.names
   per_folder_admins = var.per_folder_admins
   all_folder_admins = var.all_folder_admins

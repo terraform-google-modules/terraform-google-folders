@@ -22,7 +22,7 @@ variable "parent_id" {
 variable "parent_type" {
   type        = string
   description = "Type of the parent reosurce, defaults to organization."
-  default     = "folder"
+  default     = "folders"
 }
 
 variable "names" {
