@@ -18,38 +18,21 @@ control "gcloud" do
   describe command("gcloud resource-manager folders list --folder=#{attribute("parent_id")}") do
     its(:exit_status) { should eq 0 }
     its(:stderr) { should eq "" }
-    its(:stdout) { should include "#{attribute("names")[0]}" }
-    its(:stdout) { should include "#{attribute("names")[1]}" }
-    its(:stdout) { should include "#{attribute("names")[2]}" }
+    its(:stdout) { should include "#{attribute("names").values[0]}" }
+    its(:stdout) { should include "#{attribute("names").values[1]}" }
+    its(:stdout) { should include "#{attribute("names").values[2]}" }
   end
 
   folder_names = attribute("names")
-  folder_ids = attribute("ids")
+  folder_ids = attribute("ids_list")
   per_folder_admins = attribute("per_folder_admins")
 
-  folder_id = folder_ids[0]
-  folder_admin = per_folder_admins[0]
-  describe command("gcloud alpha resource-manager folders get-iam-policy #{folder_id}") do
-    its(:exit_status) { should eq 0 }
-    its(:stderr) { should eq "" }
-    its(:stdout) { should include "#{attribute("per_folder_admins")[0]}" }
-  end
-
-
-  folder_id = folder_ids[1]
-  folder_admin = per_folder_admins[1]
-  describe command("gcloud alpha resource-manager folders get-iam-policy #{folder_id}") do
-    its(:exit_status) { should eq 0 }
-    its(:stderr) { should eq "" }
-    its(:stdout) { should include "#{attribute("per_folder_admins")[1]}" }
-  end
-
-  folder_id = folder_ids[2]
-  folder_admin = per_folder_admins[2]
-  describe command("gcloud alpha resource-manager folders get-iam-policy #{folder_id}") do
-    its(:exit_status) { should eq 0 }
-    its(:stderr) { should eq "" }
-    its(:stdout) { should include "#{attribute("per_folder_admins")[2]}" }
+  (0..2).each do |i|
+    describe command("gcloud alpha resource-manager folders get-iam-policy #{folder_ids[i]}") do
+      its(:exit_status) { should eq 0 }
+      its(:stderr) { should eq "" }
+      its(:stdout) { should include per_folder_admins[i] }
+    end
   end
 
 end

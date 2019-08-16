@@ -9,8 +9,8 @@ attributes:
     type: string
   - name: names
     required: true
-    type: array
-  - name: ids
+    type: hash
+  - name: ids_list
     required: true
     type: array
   - name: per_folder_admins
