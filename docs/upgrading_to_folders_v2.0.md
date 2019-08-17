@@ -32,7 +32,7 @@ New output types have also been added that leverage new Terraform 0.12 features 
 
 #### Folder resources
 
-Terraform 0.12 makes it possible to expose complete resources alognside their attributes, so two new outputs have been added:
+Terraform 0.12 makes it possible to expose complete resources alongside their attributes, so two new outputs have been added:
 
 - `folder` is the first folder resource for single folder creation use cases
 - `folders` are all the folder resources as a list
@@ -49,5 +49,5 @@ When managing a single folder per module invocation, new outputs are available t
 
 New list outputs have been added to expose folder attributes and preserve the ordering of the `names` variable, as maps reorder keys lexically and might introduce subtle bugs when used as lists through `values`:
 
-- `names_list` is the list of folders display names as strings
-- `ids_list` is the list of folders ids as strings
+- `names_list` is the list of folder display names as strings
+- `ids_list` is the list of folder ids as strings
