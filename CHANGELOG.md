@@ -12,12 +12,13 @@ and this project adheres to
 ## [2.0.0] - 2019-08-16
 
 ### Changed
-
-- Change outputs to follow the same conventions used in the `cloud-storage` and `service-accounts` modules []
-  - Add resource, single-use and list outputs
+- Deprecate the `parent_id` and `parent_type` variables in favor of a single `parent` variable [#8]
+- Change outputs to follow the same conventions used in the `cloud-storage` and `service-accounts` modules ([migration instructions](docs/upgrading_to_folders_v2.0.md)) [#9]
   - Rename map outputs dropping the `names_and_` prefix
-  - Rename `display_names` output to `names`
-
+  - Add resource outputs
+  - Add single use outputs
+  - Add list-style outputs
+  
 ## [1.0.0] - 2019-07-26
 
 ### Changed
