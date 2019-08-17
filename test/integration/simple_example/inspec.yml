@@ -16,3 +16,6 @@ attributes:
   - name: per_folder_admins
     required: true
     type: array
+  - name: per_folder_admins
+    required: true
+    type: array
