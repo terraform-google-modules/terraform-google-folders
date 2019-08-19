@@ -9,7 +9,7 @@ and this project adheres to
 
 ## [Unreleased]
 
-## [2.0.0] - 2019-08-16
+## [2.0.0] - 2019-08-19
 
 ### Changed
 - Deprecate the `parent_id` and `parent_type` variables in favor of a single `parent` variable [#8]
