@@ -66,8 +66,14 @@ Functional examples are included in the
 
 | Name | Description |
 |------|-------------|
-| names\_and\_display\_names | Map of name => folder resource name. |
-| names\_and\_ids | Map of name => folder resource id. |
+| folder | Folder resource (for single use). |
+| folders | Folder resources. |
+| id | Folder id (for single use). |
+| ids | Folder ids. |
+| ids\_list | List of folder ids. |
+| name | Folder name (for single use). |
+| names | Folder names. |
+| names\_list | List of folder names. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

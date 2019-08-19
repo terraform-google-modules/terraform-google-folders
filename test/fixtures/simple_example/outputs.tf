@@ -14,9 +14,14 @@
  * limitations under the License.
  */
 
-output "names_and_ids" {
-  description = "Map of name => folder resource id."
-  value       = module.example.names_and_ids
+output "names" {
+  description = "Folder names."
+  value       = module.example.names
+}
+
+output "ids_list" {
+  description = "List of folder ids."
+  value       = module.example.ids_list
 }
 
 output "parent_id" {
@@ -27,11 +32,6 @@ output "parent_id" {
 output "parent_type" {
   description = "Type of the parent reosurce, defaults to organization."
   value       = var.parent_type
-}
-
-output "names" {
-  description = "Folder names."
-  value       = var.names
 }
 
 output "per_folder_admins" {

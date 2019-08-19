@@ -14,8 +14,17 @@
  * limitations under the License.
  */
 
-output "names_and_ids" {
-  description = "Map of name => folder resource id."
-  value       = module.folders.names_and_ids
+output "ids" {
+  description = "Folder ids."
+  value       = module.folders.ids
 }
 
+output "names" {
+  description = "Folder names."
+  value       = module.folders.names
+}
+
+output "ids_list" {
+  description = "List of folder ids."
+  value       = module.folders.ids_list
+}
