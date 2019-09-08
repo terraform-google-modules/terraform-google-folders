@@ -18,7 +18,7 @@ and this project adheres to
   - Add resource outputs
   - Add single use outputs
   - Add list-style outputs
-  
+
 ## [1.0.0] - 2019-07-26
 
 ### Changed

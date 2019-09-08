@@ -21,7 +21,7 @@ variable "parent_id" {
 
 variable "parent_type" {
   type        = string
-  description = "Type of the parent reosurce, defaults to organization."
+  description = "Type of the parent resource. One of `organizations` or `folders`."
   default     = "folders"
 }
 
