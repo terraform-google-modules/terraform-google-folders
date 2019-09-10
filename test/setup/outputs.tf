@@ -24,5 +24,5 @@ output "sa_key" {
 }
 
 output "parent_id" {
-  value = split("/", var.folder_id)[1]
+  value = var.folder_id
 }
