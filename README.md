@@ -60,7 +60,7 @@ Functional examples are included in the
 | parent | The resource name of the parent Folder or Organization. Must be of the form folders/folder_id or organizations/org_id | string | n/a | yes |
 | per\_folder\_admins | List of IAM-style members per folder who will get extended permissions. | list(string) | `<list>` | no |
 | prefix | Optional prefix to enforce uniqueness of folder names. | string | `""` | no |
-| set\_roles | Set roles to actors passed in role_members variable. | bool | `"false"` | no |
+| set\_roles | Enable setting roles via the folder admin variables. | bool | `"false"` | no |
 
 ## Outputs
 
