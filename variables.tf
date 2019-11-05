@@ -27,7 +27,7 @@ variable "names" {
 
 variable "set_roles" {
   type        = bool
-  description = "Set roles to actors passed in role_members variable."
+  description = "Enable setting roles via the folder admin variables."
   default     = false
 }
 
