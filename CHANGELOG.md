@@ -9,6 +9,12 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.0.1] - 2019-11-05
+
+### Changed
+
+- update description of the `set_roles` variable [#19]
+
 ## [2.0.0] - 2019-08-19
 
 ### Changed
@@ -31,7 +37,12 @@ and this project adheres to
 
 - Initial release
 
-[Unreleased]: https://github.com/terraform-google-modules/terraform-google-folders/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/terraform-google-modules/terraform-google-folders/compare/v2.0.1...HEAD
+[2.0.0]: https://github.com/terraform-google-modules/terraform-google-folders/compare/v2.0.0...v2.0.1
+[2.0.0]: https://github.com/terraform-google-modules/terraform-google-folders/compare/v1.0.0...v2.0.0
 [1.0.0]: https://github.com/terraform-google-modules/terraform-google-folders/compare/v0.1.0...v1.0.0
 [0.1.0]: https://github.com/terraform-google-modules/terraform-google-folders/releases/tag/v0.1.0
+[#19]: https://github.com/terraform-google-modules/terraform-google-folders/pull/19
+[#9]: https://github.com/terraform-google-modules/terraform-google-folders/pull/9
+[#8]: https://github.com/terraform-google-modules/terraform-google-folders/pull/8
 [#3]: https://github.com/terraform-google-modules/terraform-google-folders/pull/3
