@@ -36,12 +36,12 @@ output "folders" {
 
 output "ids" {
   description = "Folder ids."
-  value       = zipmap(var.names, google_folder.folders[*].name)
+  value       = zipmap(var.names, slice(google_folder.folders[*].name, 0, length(var.names)))
 }
 
 output "names" {
   description = "Folder names."
-  value       = zipmap(var.names, google_folder.folders[*].display_name)
+  value       = zipmap(var.names, slice(google_folder.folders[*].display_name, 0, length(var.names)))
 }
 
 output "ids_list" {
