@@ -35,7 +35,7 @@ resource "google_project_iam_member" "int_test" {
 }
 
 resource "google_folder_iam_member" "int_test" {
-  folder = var.folder_id
+  folder = google_folder.ephemeral.name
   role   = "roles/resourcemanager.folderAdmin"
   member = "serviceAccount:${google_service_account.int_test.email}"
 }

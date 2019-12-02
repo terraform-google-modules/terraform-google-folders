@@ -24,5 +24,5 @@ output "sa_key" {
 }
 
 output "parent_id" {
-  value = var.folder_id
+  value = element(reverse(split("/", google_folder.ephemeral.name)), 0)
 }
