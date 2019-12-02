@@ -32,11 +32,11 @@ module "folders" {
 
   set_roles = true
 
-  per_folder_admins = [
-    "group:gcp-developers@domain.com",
-    "group:gcp-qa@domain.com",
-    "group:gcp-ops@domain.com",
-  ]
+  per_folder_admins = {
+    dev = "group:gcp-developers@domain.com"
+    staging = "group:gcp-qa@domain.com"
+    production = "group:gcp-ops@domain.com"
+  }
 
   all_folder_admins = [
     "group:gcp-security@domain.com",
@@ -57,7 +57,7 @@ Functional examples are included in the
 | folder\_admin\_roles | List of roles that will be applied to per folder owners on their respective folder. | list(string) | `<list>` | no |
 | names | Folder names. | list(string) | `<list>` | no |
 | parent | The resource name of the parent Folder or Organization. Must be of the form folders/folder_id or organizations/org_id | string | n/a | yes |
-| per\_folder\_admins | List of IAM-style members per folder who will get extended permissions. | list(string) | `<list>` | no |
+| per\_folder\_admins | IAM-style members per folder who will get extended permissions. | map(string) | `<map>` | no |
 | prefix | Optional prefix to enforce uniqueness of folder names. | string | `""` | no |
 | set\_roles | Enable setting roles via the folder admin variables. | bool | `"false"` | no |
 
@@ -66,7 +66,8 @@ Functional examples are included in the
 | Name | Description |
 |------|-------------|
 | folder | Folder resource (for single use). |
-| folders | Folder resources. |
+| folders | Folder resources as list. |
+| folders\_map | Folder resources by name. |
 | id | Folder id (for single use). |
 | ids | Folder ids. |
 | ids\_list | List of folder ids. |
