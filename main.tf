@@ -25,7 +25,7 @@ locals {
 resource "google_folder" "folders" {
   count        = length(var.names)
   display_name = "${local.prefix}${element(var.names, count.index)}"
-  parent       = "${var.parent}"
+  parent       = var.parent
 }
 
 # give project creation access to service accounts
