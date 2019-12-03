@@ -14,6 +14,14 @@
  * limitations under the License.
  */
 
+resource "random_pet" "folder" {
+}
+
+resource "google_folder" "ephemeral" {
+  display_name = "Ephemeral ${random_pet.folder.id}"
+  parent       = "folders/${var.folder_id}"
+}
+
 module "folders-project" {
   source  = "terraform-google-modules/project-factory/google"
   version = "~> 3.0"
@@ -21,7 +29,7 @@ module "folders-project" {
   name              = "ci-folders"
   random_project_id = "true"
   org_id            = var.org_id
-  folder_id         = var.folder_id
+  folder_id         = google_folder.ephemeral.name
   billing_account   = var.billing_account
 
   activate_apis = [
