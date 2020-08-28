@@ -49,7 +49,7 @@ variable "all_folder_admins" {
   type        = list(string)
   description = "List of IAM-style members that will get the extended permissions across all the folders."
   default = [
-    "group:gcp-global-cicd@apszaz.com",
+    "group:test-gcp-org-admins@test.infra.cft.tips",
   ]
 }
 
