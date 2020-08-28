@@ -13,7 +13,6 @@ The resources/services/activations/deletions that this module will create/trigge
   and need a Terraform 0.11.x-compatible version of this module, the last released version intended for
   Terraform 0.11.x is [0.1.0](https://registry.terraform.io/modules/terraform-google-modules/folders/google/0.1.0).
 
-
 ## Usage
 
 Basic usage of this module is as follows:
@@ -21,7 +20,7 @@ Basic usage of this module is as follows:
 ```hcl
 module "folders" {
   source  = "terraform-google-modules/folders/google"
-  version = "~> 2.0"
+  version = "~> 3.36.0"
 
   parent  = "folders/65552901371"
 

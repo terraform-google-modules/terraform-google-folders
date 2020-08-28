@@ -15,7 +15,7 @@
  */
 
 provider "google" {
-  version = "~> 2.7"
+  version = "~> 3.36.0"
 }
 
 module "folders" {
