@@ -39,9 +39,9 @@ variable "per_folder_admins" {
   type        = map(string)
   description = "List of IAM-style members per folder who will get extended permissions."
   default = {
-    dev        = "group:gcp-ddt-developers@apszaz.com",
-    staging    = "group:gcp-ddt-qa@apszaz.com",
-    production = "group:gcp-ddt-ops@apszaz.com",
+    dev        = "group:test-gcp-developers@test.infra.cft.tips",
+    staging    = "group:test-gcp-qa@test.infra.cft.tips",
+    production = "group:test-gcp-ops@test.infra.cft.tips",
   }
 }
 
