@@ -24,6 +24,11 @@ output "ids_list" {
   value       = module.example.ids_list
 }
 
+output "names_list" {
+  description = "List of folder names."
+  value       = module.example.names_list
+}
+
 output "parent_id" {
   description = "Id of the resource under which the folder will be placed."
   value       = var.parent_id
@@ -35,7 +40,7 @@ output "parent_type" {
 }
 
 output "per_folder_admins" {
-  description = "List of IAM-style members per folder who will get extended permissions."
+  description = "IAM-style members per folder who will get extended permissions."
   value       = var.per_folder_admins
 }
 

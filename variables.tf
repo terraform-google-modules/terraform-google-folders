@@ -32,9 +32,9 @@ variable "set_roles" {
 }
 
 variable "per_folder_admins" {
-  type        = list(string)
-  description = "List of IAM-style members per folder who will get extended permissions."
-  default     = []
+  type        = map(string)
+  description = "IAM-style members per folder who will get extended permissions."
+  default     = {}
 }
 
 variable "all_folder_admins" {

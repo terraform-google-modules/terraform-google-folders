@@ -11,7 +11,7 @@ This example illustrates how to use the `folders` module.
 | names | Folder names. | list(string) | `<list>` | no |
 | parent\_id | Id of the resource under which the folder will be placed. | string | n/a | yes |
 | parent\_type | Type of the parent resource. One of `organizations` or `folders`. | string | `"folders"` | no |
-| per\_folder\_admins | List of IAM-style members per folder who will get extended permissions. | list(string) | `<list>` | no |
+| per\_folder\_admins | IAM-style members per folder who will get extended permissions. | map(string) | `<map>` | no |
 
 ## Outputs
 
@@ -20,6 +20,7 @@ This example illustrates how to use the `folders` module.
 | ids | Folder ids. |
 | ids\_list | List of folder ids. |
 | names | Folder names. |
+| names\_list | List of folder names. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

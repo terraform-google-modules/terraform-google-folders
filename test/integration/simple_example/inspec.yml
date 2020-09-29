@@ -13,9 +13,12 @@ attributes:
   - name: ids_list
     required: true
     type: array
-  - name: per_folder_admins
+  - name: names_list
     required: true
     type: array
   - name: per_folder_admins
+    required: true
+    type: hash
+  - name: all_folder_admins
     required: true
     type: array

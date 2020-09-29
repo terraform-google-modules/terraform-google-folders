@@ -23,7 +23,7 @@ control "gcloud" do
     its(:stdout) { should include "#{attribute("names").values[2]}" }
   end
 
-  folder_names = attribute("names")
+  folder_names_list = attribute("names_list")
   folder_ids = attribute("ids_list")
   per_folder_admins = attribute("per_folder_admins")
 
@@ -31,7 +31,7 @@ control "gcloud" do
     describe command("gcloud alpha resource-manager folders get-iam-policy #{folder_ids[i]}") do
       its(:exit_status) { should eq 0 }
       its(:stderr) { should eq "" }
-      its(:stdout) { should include per_folder_admins[i] }
+      its(:stdout) { should include per_folder_admins[folder_names_list[i]] }
     end
   end
 
