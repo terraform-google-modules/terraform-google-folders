@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+
 terraform {
-  required_version = ">=0.12.6"
+  required_version = ">= 0.13.0"
+  provider_meta "google" {
+    module_name = "blueprints/terraform/terraform-google-folders/v3.0.0"
+  }
 }
