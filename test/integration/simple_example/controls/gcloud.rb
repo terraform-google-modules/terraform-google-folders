@@ -31,7 +31,7 @@ control "gcloud" do
     describe command("gcloud alpha resource-manager folders get-iam-policy #{folder_ids[i]}") do
       its(:exit_status) { should eq 0 }
       its(:stderr) { should eq "" }
-      its(:stdout) { should include per_folder_admins[folder_names_list[i]] }
+      its(:stdout) { should include per_folder_admins[folder_names_list[i].to_sym] }
     end
   end
 
