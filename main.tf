@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-terraform {
-  required_version = ">=0.12.6, <0.14"
-}
-
 locals {
   prefix       = var.prefix == "" ? "" : "${var.prefix}-"
   folders_list = [for name in var.names : google_folder.folders[name]]

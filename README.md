@@ -9,9 +9,9 @@ The resources/services/activations/deletions that this module will create/trigge
 
 ## Compatibility
 
- This module is meant for use with Terraform 0.12. If you haven't [upgraded](https://www.terraform.io/upgrade-guides/0-12.html)
-  and need a Terraform 0.11.x-compatible version of this module, the last released version intended for
-  Terraform 0.11.x is [0.1.0](https://registry.terraform.io/modules/terraform-google-modules/folders/google/0.1.0).
+ This module is meant for use with Terraform 0.13. If you haven't [upgraded](https://www.terraform.io/upgrade-guides/0-13.html)
+  and need a Terraform 0.12.x-compatible version of this module, the last released version intended for
+  Terraform 0.12.x is [2.0.2](https://registry.terraform.io/modules/terraform-google-modules/folders/google/2.0.2).
 
 ## Usage
 
@@ -20,7 +20,7 @@ Basic usage of this module is as follows:
 ```hcl
 module "folders" {
   source  = "terraform-google-modules/folders/google"
-  version = "~> 3.36.0"
+  version = "~> 3.0"
 
   parent  = "folders/65552901371"
 
@@ -52,14 +52,14 @@ Functional examples are included in the
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| all\_folder\_admins | List of IAM-style members that will get the extended permissions across all the folders. | list(string) | `<list>` | no |
-| folder\_admin\_roles | List of roles that will be applied to per folder owners on their respective folder. | list(string) | `<list>` | no |
-| names | Folder names. | list(string) | `<list>` | no |
-| parent | The resource name of the parent Folder or Organization. Must be of the form folders/folder_id or organizations/org_id | string | n/a | yes |
-| per\_folder\_admins | IAM-style members per folder who will get extended permissions. | map(string) | `<map>` | no |
-| prefix | Optional prefix to enforce uniqueness of folder names. | string | `""` | no |
-| set\_roles | Enable setting roles via the folder admin variables. | bool | `"false"` | no |
+|------|-------------|------|---------|:--------:|
+| all\_folder\_admins | List of IAM-style members that will get the extended permissions across all the folders. | `list(string)` | `[]` | no |
+| folder\_admin\_roles | List of roles that will be applied to per folder owners on their respective folder. | `list(string)` | <pre>[<br>  "roles/owner",<br>  "roles/resourcemanager.folderViewer",<br>  "roles/resourcemanager.projectCreator",<br>  "roles/compute.networkAdmin"<br>]</pre> | no |
+| names | Folder names. | `list(string)` | `[]` | no |
+| parent | The resource name of the parent Folder or Organization. Must be of the form folders/folder\_id or organizations/org\_id | `string` | n/a | yes |
+| per\_folder\_admins | IAM-style members per folder who will get extended permissions. | `map(string)` | `{}` | no |
+| prefix | Optional prefix to enforce uniqueness of folder names. | `string` | `""` | no |
+| set\_roles | Enable setting roles via the folder admin variables. | `bool` | `false` | no |
 
 ## Outputs
 
@@ -85,7 +85,7 @@ These sections describe requirements for using this module.
 
 The following dependencies must be available:
 
-- [Terraform][terraform] v0.12
+- [Terraform][terraform] v0.13
 - [Terraform Provider for GCP][terraform-provider-gcp] plugin v2.0
 
 ### Service Account
