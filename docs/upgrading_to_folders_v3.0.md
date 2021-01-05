@@ -5,6 +5,7 @@ The v3.0 release of the Folders module is a backwards incompatible release, due 
 - the `per_folder_admins` variable is of type `map(string)`, see [Readme](../Readme.md#Usage) for usage
 - module uses for_each instead of count
 - minimum Terraform version increased to 0.13
+- minimum provider version increased to 3.45
 
 ## Migration Instructions
 
