@@ -12,7 +12,7 @@ and this project adheres to
 
 ### ⚠ BREAKING CHANGES
 
-* This is a breaking change as the Terraform state location for folders has moved. See the upgrade guide for details.
+* This is a breaking change as the Terraform state location for folders has moved. See the [upgrade guide](https://github.com/terraform-google-modules/terraform-google-folders/blob/master/docs/upgrading_to_folders_v3.0.md) for details.
 
 ### Features
 
