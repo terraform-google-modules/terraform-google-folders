@@ -24,14 +24,13 @@ resource "google_folder" "ephemeral" {
 
 module "folders-project" {
   source  = "terraform-google-modules/project-factory/google"
-  version = "~> 9.0"
+  version = "~> 11.0"
 
-  name                 = "ci-folders"
-  random_project_id    = "true"
-  org_id               = var.org_id
-  folder_id            = google_folder.ephemeral.name
-  billing_account      = var.billing_account
-  skip_gcloud_download = true
+  name              = "ci-folders"
+  random_project_id = "true"
+  org_id            = var.org_id
+  folder_id         = google_folder.ephemeral.name
+  billing_account   = var.billing_account
 
   activate_apis = [
     "cloudresourcemanager.googleapis.com",
