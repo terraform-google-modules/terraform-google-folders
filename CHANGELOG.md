@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.0](https://www.github.com/terraform-google-modules/terraform-google-folders/compare/v3.0.0...v3.1.0) (2021-12-20)
+
+
+### Features
+
+* update TPG version constraints to allow 4.0 ([#36](https://www.github.com/terraform-google-modules/terraform-google-folders/issues/36)) ([38c6281](https://www.github.com/terraform-google-modules/terraform-google-folders/commit/38c6281513746a81721c7cc3acaa91fa7c842155))
+
 ## [3.0.0](https://www.github.com/terraform-google-modules/terraform-google-folders/compare/v2.0.2...v3.0.0) (2021-01-20)
 
 
