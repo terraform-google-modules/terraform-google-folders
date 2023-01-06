@@ -11,7 +11,7 @@ This example illustrates how to use the `folders` module.
 | names | Folder names. | `list(string)` | `[]` | no |
 | parent\_id | Id of the resource under which the folder will be placed. | `string` | n/a | yes |
 | parent\_type | Type of the parent resource. One of `organizations` or `folders`. | `string` | `"folders"` | no |
-| per\_folder\_admins | IAM-style members per folder who will get extended permissions. | `map(string)` | `{}` | no |
+| per\_folder\_admins | List of IAM-style roles per members per folder who will get extended permissions. | <pre>map(object({<br>    member = string<br>    roles  = optional(list(string))<br>  }))</pre> | `{}` | no |
 
 ## Outputs
 

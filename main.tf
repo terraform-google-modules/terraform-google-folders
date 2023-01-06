@@ -19,7 +19,11 @@ locals {
   folders_list = [for name in var.names : google_folder.folders[name]]
   first_folder = local.folders_list[0]
 
-  name_role_pairs = setproduct(var.names, var.folder_admin_roles)
+  name_role_pairs = concat(
+    [for name in var.names : setproduct(
+      [name], lookup(var.per_folder_admins, name, null).roles != null ? lookup(var.per_folder_admins, name, null).roles : var.folder_admin_roles
+    )]
+  ...)
   folder_admin_roles_map_data = zipmap(
     [for pair in local.name_role_pairs : "${pair[0]}-${pair[1]}"],
     [for pair in local.name_role_pairs : {
@@ -47,7 +51,7 @@ resource "google_folder_iam_binding" "owners" {
   members = compact(
     concat(
       split(",",
-        lookup(var.per_folder_admins, each.value.name, ""),
+        lookup(var.per_folder_admins, each.value.name, null).member,
       ),
       var.all_folder_admins,
     ),

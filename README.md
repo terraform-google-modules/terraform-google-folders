@@ -55,10 +55,10 @@ Functional examples are included in the
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | all\_folder\_admins | List of IAM-style members that will get the extended permissions across all the folders. | `list(string)` | `[]` | no |
-| folder\_admin\_roles | List of roles that will be applied to per folder owners on their respective folder. | `list(string)` | <pre>[<br>  "roles/owner",<br>  "roles/resourcemanager.folderViewer",<br>  "roles/resourcemanager.projectCreator",<br>  "roles/compute.networkAdmin"<br>]</pre> | no |
+| folder\_admin\_roles | List of roles that will be applied to a folder if roles are not explictly specified in per\_folder\_admins | `list(string)` | <pre>[<br>  "roles/owner",<br>  "roles/resourcemanager.folderViewer",<br>  "roles/resourcemanager.projectCreator",<br>  "roles/compute.networkAdmin"<br>]</pre> | no |
 | names | Folder names. | `list(string)` | `[]` | no |
 | parent | The resource name of the parent Folder or Organization. Must be of the form folders/folder\_id or organizations/org\_id | `string` | n/a | yes |
-| per\_folder\_admins | IAM-style members per folder who will get extended permissions. | `map(string)` | `{}` | no |
+| per\_folder\_admins | IAM-style roles per members per folder who will get extended permissions. If roles are not provided for a folder/member combination, the list provided as `folder_admin_roles` will be applied as default. | <pre>map(object({<br>    member = string<br>    roles  = optional(list(string))<br>  }))</pre> | `{}` | no |
 | prefix | Optional prefix to enforce uniqueness of folder names. | `string` | `""` | no |
 | set\_roles | Enable setting roles via the folder admin variables. | `bool` | `false` | no |
 

@@ -36,12 +36,30 @@ variable "names" {
 }
 
 variable "per_folder_admins" {
-  type        = map(string)
-  description = "List of IAM-style members per folder who will get extended permissions."
+  type = map(object({
+    member = string
+    roles  = optional(list(string))
+  }))
+  description = "List of IAM-style roles per members per folder who will get extended permissions."
   default = {
-    dev        = "group:test-gcp-developers@test.infra.cft.tips",
-    staging    = "group:test-gcp-qa@test.infra.cft.tips",
-    production = "group:test-gcp-ops@test.infra.cft.tips",
+    dev = {
+      member = "group:test-gcp-developers@test.infra.cft.tips",
+      roles = [
+        "roles/owner",
+        "roles/resourcemanager.folderViewer",
+      ]
+    },
+    staging = {
+      member = "group:test-gcp-qa@test.infra.cft.tips",
+    }
+    production = {
+      member = "group:test-gcp-ops@test.infra.cft.tips",
+      roles = [
+        "roles/owner",
+        "roles/resourcemanager.folderViewer",
+        "roles/resourcemanager.projectCreator",
+      ]
+    }
   }
 }
 

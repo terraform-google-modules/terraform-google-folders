@@ -32,8 +32,11 @@ variable "set_roles" {
 }
 
 variable "per_folder_admins" {
-  type        = map(string)
-  description = "IAM-style members per folder who will get extended permissions."
+  type = map(object({
+    member = string
+    roles  = optional(list(string))
+  }))
+  description = "IAM-style roles per members per folder who will get extended permissions. If roles are not provided for a folder/member combination, the list provided as `folder_admin_roles` will be applied as default."
   default     = {}
 }
 
@@ -51,7 +54,7 @@ variable "prefix" {
 
 variable "folder_admin_roles" {
   type        = list(string)
-  description = "List of roles that will be applied to per folder owners on their respective folder."
+  description = "List of roles that will be applied to a folder if roles are not explictly specified in per_folder_admins"
 
   default = [
     "roles/owner",
