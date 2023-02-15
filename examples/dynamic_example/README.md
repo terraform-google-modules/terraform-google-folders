@@ -2,6 +2,7 @@
 
 This Terraform code will create dynamic Resource Heirachy Folder structure under your Organization Node in your GCP environment.
 
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
@@ -38,3 +39,5 @@ This Terraform code will create dynamic Resource Heirachy Folder structure under
 | Name | Description |
 |------|-------------|
 | <a name="output_folder_ids"></a> [folder\_ids](#output\_folder\_ids) | n/a |
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
