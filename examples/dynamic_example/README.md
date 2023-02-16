@@ -1,6 +1,6 @@
 # Resource Hierarchy Folder Creation
 
-This Terraform code will create dynamic Resource Heirachy Folder structure under your Organization Node in your GCP environment.
+This Terraform code will create dynamic resource hierarchy folder structure under your Organization node in your GCP environment.
 
 ## Sample tfvars file
 
