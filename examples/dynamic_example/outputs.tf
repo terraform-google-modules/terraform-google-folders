@@ -15,5 +15,5 @@
  */
 
 output "folder_ids" {
-  value = [[for k, v in var.folder_list : module.folders[k].ids], [for i in local.sub_folders1_var : module.sub_folders1[i].ids], [for j in local.sub_folders2_var : module.sub_folders2[j].ids], [for l in local.sub_folders3_var : module.sub_folders3[l].ids], [for m in local.sub_folders4_var : module.sub_folders4[m].ids], [for m in local.sub_folders5_var : module.sub_folders5[m].ids], [for m in local.sub_folders6_var : module.sub_folders6[m].ids], [for m in local.sub_folders7_var : module.sub_folders7[m].ids], [for m in local.sub_folders8_var : module.sub_folders8[m].ids], [for m in local.sub_folders9_var : module.sub_folders9[m].ids]]
+  value = [[for k, v in var.folder_map : module.folders[k].ids], [for i in local.sub_folders1_var : module.sub_folders1[i].ids], [for j in local.sub_folders2_var : module.sub_folders2[j].ids], [for l in local.sub_folders3_var : module.sub_folders3[l].ids]]
 }
