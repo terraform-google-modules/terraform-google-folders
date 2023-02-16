@@ -6,7 +6,7 @@ This Terraform code will create dynamic resource hierarchy folder structure unde
 
 ```hcl
 #terraform.tfvars
-org_id = "xxxxxxxxxxx"
+org_id = "xxxxxxxxxx"
 folder_map = {
               "Accounts" : {
                              "Dev1" : [],
