@@ -21,5 +21,5 @@ variable "org_id" {
 
 variable "folder_list" {
   type        = any
-  description = "Mention the folder structure"
+  description = "Folder structure as a map"
 }
