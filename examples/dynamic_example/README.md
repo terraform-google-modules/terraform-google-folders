@@ -2,6 +2,24 @@
 
 This Terraform code will create dynamic Resource Heirachy Folder structure under your Organization Node in your GCP environment.
 
+## Sample tfvars file
+
+```hcl
+#terraform.tfvars
+org_id = "xxxxxxxxxxx"
+folder_list = {
+              "Accounts" : {
+                             "Dev1" : [],
+                             "Dev2" : {
+                                      "DevA" : []
+                                      }
+                           },
+              "Sales" : {
+                          "Dev1" : []
+                        }
+              }
+```
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
