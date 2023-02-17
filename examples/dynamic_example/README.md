@@ -51,7 +51,7 @@ To scale up from 3 to 4 levels of sub-folders, follow below mentioned steps.
 Add a new variable in the local block.
 
 ```hcl
-sub_folders4_var = compact(flatten([for k, i in var.folder_list : i == [] ? [] : [for ip1, op1 in i : op1 == [] ? [] : [for ip2, op2 in op1 : op2 == [] ? [] : [for ip3, op3 in op2 : op3 == [] ? [] : [for ip4, op4 in op3 : join("=4>", [join("=3>", [join("=2>", [join("=1>", [k, ip1]), ip2]), ip3]), ip4])]]]]]))
+sub_folders4_var = compact(flatten([for k, i in var.folder_map : i == [] ? [] : [for ip1, op1 in i : op1 == [] ? [] : [for ip2, op2 in op1 : op2 == [] ? [] : [for ip3, op3 in op2 : op3 == [] ? [] : [for ip4, op4 in op3 : join("=4>", [join("=3>", [join("=2>", [join("=1>", [k, ip1]), ip2]), ip3]), ip4])]]]]]))
 ```
 
 Note: `n` level of vars contain `n+1` of `for` loop, `n` of `if condition` and `n` of `join` functions.
