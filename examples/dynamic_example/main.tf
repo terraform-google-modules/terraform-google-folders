@@ -16,11 +16,11 @@
 
 locals {
 
-  sub_folders1_var = compact(flatten([for k, i in var.folder_map : i == [] ? [] : [for ip1, op1 in i : join("=1>", [k, ip1])]]))
+  sub_folders1_var = compact(flatten([for k, i in var.folder_map : length(i) == 0 ? [] : [for ip1, op1 in i : join("=1>", [k, ip1])]]))
 
-  sub_folders2_var = compact(flatten([for k, i in var.folder_map : i == [] ? [] : [for ip1, op1 in i : op1 == [] ? [] : [for ip2, op2 in op1 : join("=2>", [join("=1>", [k, ip1]), ip2])]]]))
+  sub_folders2_var = compact(flatten([for k, i in var.folder_map : length(i) == 0 ? [] : [for ip1, op1 in i : length(op1) == 0 ? [] : [for ip2, op2 in op1 : join("=2>", [join("=1>", [k, ip1]), ip2])]]]))
 
-  sub_folders3_var = compact(flatten([for k, i in var.folder_map : i == [] ? [] : [for ip1, op1 in i : op1 == [] ? [] : [for ip2, op2 in op1 : op2 == [] ? [] : [for ip3, op3 in op2 : join("=3>", [join("=2>", [join("=1>", [k, ip1]), ip2]), ip3])]]]]))
+  sub_folders3_var = compact(flatten([for k, i in var.folder_map : length(i) == 0 ? [] : [for ip1, op1 in i : length(op1) == 0 ? [] : [for ip2, op2 in op1 : length(op2) == 0 ? [] : [for ip3, op3 in op2 : join("=3>", [join("=2>", [join("=1>", [k, ip1]), ip2]), ip3])]]]]))
 
 }
 
