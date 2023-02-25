@@ -26,7 +26,7 @@ spec:
   version: 3.1.0
   actuationTool:
     type: Terraform
-    version: '>= 0.13.0'
+    version: '>= 1.3.0'
   examples:
   - name: simple_example
     location: examples/simple_example
@@ -58,8 +58,8 @@ spec:
     description: IAM-style roles per members per folder who will get extended permissions. If roles are not provided for a folder/member combination, the list provided as `folder_admin_roles` will be applied as default.
     type: |-
       map(object({
-          member = string
-          roles  = optional(list(string))
+          members = list(string)
+          roles   = optional(list(string))
         }))
     default: {}
     required: false
@@ -92,6 +92,8 @@ spec:
     description: Folder names.
   - name: names_list
     description: List of folder names.
+  - name: per_folder_admins
+    description: IAM-style members per folder who will get extended permissions.
   roles:
   - level: Project
     roles:

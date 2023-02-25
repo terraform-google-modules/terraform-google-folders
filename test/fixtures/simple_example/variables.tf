@@ -25,44 +25,6 @@ variable "parent_type" {
   default     = "folders"
 }
 
-variable "names" {
-  type        = list(string)
-  description = "Folder names."
-  default = [
-    "dev",
-    "staging",
-    "production",
-  ]
-}
-
-variable "per_folder_admins" {
-  type = map(object({
-    member = string
-    roles  = optional(list(string))
-  }))
-  description = "List of IAM-style roles per members per folder who will get extended permissions."
-  default = {
-    dev = {
-      member = "group:test-gcp-developers@test.infra.cft.tips",
-      roles = [
-        "roles/owner",
-        "roles/resourcemanager.folderViewer",
-      ]
-    },
-    staging = {
-      member = "group:test-gcp-qa@test.infra.cft.tips",
-    }
-    production = {
-      member = "group:test-gcp-ops@test.infra.cft.tips",
-      roles = [
-        "roles/owner",
-        "roles/resourcemanager.folderViewer",
-        "roles/resourcemanager.projectCreator",
-      ]
-    }
-  }
-}
-
 variable "all_folder_admins" {
   type        = list(string)
   description = "List of IAM-style members that will get the extended permissions across all the folders."

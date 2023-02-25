@@ -41,7 +41,7 @@ output "parent_type" {
 
 output "per_folder_admins" {
   description = "IAM-style members per folder who will get extended permissions."
-  value       = var.per_folder_admins
+  value       = module.example.per_folder_admins
 }
 
 output "all_folder_admins" {

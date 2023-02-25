@@ -18,9 +18,31 @@ module "folders" {
   source = "../.."
 
   parent            = "${var.parent_type}/${var.parent_id}"
-  names             = var.names
   set_roles         = true
-  per_folder_admins = var.per_folder_admins
   all_folder_admins = var.all_folder_admins
+
+  names = [
+    "dev",
+    "staging",
+    "production",
+  ]
+
+  per_folder_admins = {
+    dev = {
+      members = [
+        "group:test-gcp-developers@test.infra.cft.tips"
+      ],
+    },
+    staging = {
+      members = [
+        "group:test-gcp-qa@test.infra.cft.tips",
+      ],
+    }
+    production = {
+      members = [
+        "group:test-gcp-ops@test.infra.cft.tips",
+      ],
+    }
+  }
 }
 

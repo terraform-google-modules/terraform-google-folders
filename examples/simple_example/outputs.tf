@@ -33,3 +33,8 @@ output "names_list" {
   description = "List of folder names."
   value       = module.folders.names_list
 }
+
+output "per_folder_admins" {
+  description = "IAM-style members per folder who will get extended permissions."
+  value       = module.folders.per_folder_admins
+}
