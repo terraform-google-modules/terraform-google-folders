@@ -25,18 +25,6 @@ variable "parent_type" {
   default     = "folders"
 }
 
-variable "names" {
-  type        = list(string)
-  description = "Folder names."
-  default     = []
-}
-
-variable "per_folder_admins" {
-  type        = map(string)
-  description = "IAM-style members per folder who will get extended permissions."
-  default     = {}
-}
-
 variable "all_folder_admins" {
   type        = list(string)
   description = "List of IAM-style members that will get the extended permissions across all the folders."

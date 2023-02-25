@@ -62,3 +62,10 @@ output "names_list" {
   description = "List of folder names."
   value       = local.folders_list[*].display_name
 }
+
+output "per_folder_admins" {
+  description = "IAM-style members per folder who will get extended permissions."
+  # value       = var.per_folder_admins
+  value = { for k, v in var.per_folder_admins : k => join(",", v.members) }
+}
+

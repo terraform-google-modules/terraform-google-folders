@@ -1,0 +1,103 @@
+# Copyright 2023 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: blueprints.cloud.google.com/v1alpha1
+kind: BlueprintMetadata
+metadata:
+  name: terraform-google-folders
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  title: terraform-google-folders
+  source:
+    repo: https://github.com/terraform-google-modules/terraform-google-folders.git
+    sourceType: git
+  version: 3.1.0
+  actuationTool:
+    type: Terraform
+    version: '>= 1.3.0'
+  examples:
+  - name: simple_example
+    location: examples/simple_example
+  variables:
+  - name: all_folder_admins
+    description: List of IAM-style members that will get the extended permissions across all the folders.
+    type: list(string)
+    default: []
+    required: false
+  - name: folder_admin_roles
+    description: List of roles that will be applied to a folder if roles are not explictly specified in per_folder_admins
+    type: list(string)
+    default:
+    - roles/owner
+    - roles/resourcemanager.folderViewer
+    - roles/resourcemanager.projectCreator
+    - roles/compute.networkAdmin
+    required: false
+  - name: names
+    description: Folder names.
+    type: list(string)
+    default: []
+    required: false
+  - name: parent
+    description: The resource name of the parent Folder or Organization. Must be of the form folders/folder_id or organizations/org_id
+    type: string
+    required: true
+  - name: per_folder_admins
+    description: IAM-style roles per members per folder who will get extended permissions. If roles are not provided for a folder/member combination, the list provided as `folder_admin_roles` will be applied as default.
+    type: |-
+      map(object({
+          members = list(string)
+          roles   = optional(list(string))
+        }))
+    default: {}
+    required: false
+  - name: prefix
+    description: Optional prefix to enforce uniqueness of folder names.
+    type: string
+    default: ""
+    required: false
+  - name: set_roles
+    description: Enable setting roles via the folder admin variables.
+    type: bool
+    default: false
+    required: false
+  outputs:
+  - name: folder
+    description: Folder resource (for single use).
+  - name: folders
+    description: Folder resources as list.
+  - name: folders_map
+    description: Folder resources by name.
+  - name: id
+    description: Folder id (for single use).
+  - name: ids
+    description: Folder ids.
+  - name: ids_list
+    description: List of folder ids.
+  - name: name
+    description: Folder name (for single use).
+  - name: names
+    description: Folder names.
+  - name: names_list
+    description: List of folder names.
+  - name: per_folder_admins
+    description: IAM-style members per folder who will get extended permissions.
+  roles:
+  - level: Project
+    roles:
+    - roles/owner
+  services:
+  - cloudresourcemanager.googleapis.com
+  - serviceusage.googleapis.com
