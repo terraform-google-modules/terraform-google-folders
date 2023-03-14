@@ -38,17 +38,17 @@ module "folders" {
 + {
 +    dev = {
 +      members = [
-+        "group:test-gcp-developers@test.infra.cft.tips"
++        "group:test-gcp-developers@test.blueprints.joonix.net"
 +      ],
 +    },
 +    staging = {
 +      members = [
-+        "group:test-gcp-qa@test.infra.cft.tips",
++        "group:test-gcp-qa@test.blueprints.joonix.net",
 +      ],
 +    }
 +    production = {
 +      members = [
-+        "group:test-gcp-ops@test.infra.cft.tips",
++        "group:test-gcp-ops@test.blueprints.joonix.net",
 +      ],
 +    }
 + }
@@ -63,11 +63,11 @@ Running this will produce slight changes to the outputs but will make no change 
 ```bash
 Changes to Outputs:
   ~ per_folder_admins = {
-      - "dev"        = "group:test-gcp-developers@test.infra.cft.tips"
-      - "production" = "group:test-gcp-ops@test.infra.cft.tips"
-      - "staging"    = "group:test-gcp-qa@test.infra.cft.tips"
+      - "dev"        = "group:test-gcp-developers@test.blueprints.joonix.net"
+      - "production" = "group:test-gcp-ops@test.blueprints.joonix.net"
+      - "staging"    = "group:test-gcp-qa@test.blueprints.joonix.net"
     } -> {
-      + dev        = "group:test-gcp-developers@test.infra.cft.tips"
-      + production = "group:test-gcp-ops@test.infra.cft.tips"
-      + staging    = "group:test-gcp-qa@test.infra.cft.tips"
+      + dev        = "group:test-gcp-developers@test.blueprints.joonix.net"
+      + production = "group:test-gcp-ops@test.blueprints.joonix.net"
+      + staging    = "group:test-gcp-qa@test.blueprints.joonix.net"
 ```
