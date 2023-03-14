@@ -30,17 +30,17 @@ module "folders" {
   per_folder_admins = {
     dev = {
       members = [
-        "group:test-gcp-developers@test.infra.cft.tips"
+        "group:test-gcp-developers@test.blueprints.joonix.net"
       ],
     },
     staging = {
       members = [
-        "group:test-gcp-qa@test.infra.cft.tips",
+        "group:test-gcp-qa@test.blueprints.joonix.net",
       ],
     }
     production = {
       members = [
-        "group:test-gcp-ops@test.infra.cft.tips",
+        "group:test-gcp-ops@test.blueprints.joonix.net",
       ],
     }
   }
