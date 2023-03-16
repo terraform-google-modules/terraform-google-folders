@@ -16,22 +16,22 @@
 
 output "folder" {
   description = "Folder resource (for single use)."
-  value       = try(google_folder.folders[var.names[0]],"")
+  value       = try(local.first_folder, "")
 }
 
 output "id" {
   description = "Folder id (for single use)."
-  value       = try(google_folder.folders[var.names[0]].name,"")
+  value       = try(local.first_folder.name, "")
 }
 
 output "name" {
   description = "Folder name (for single use)."
-  value       = try(google_folder.folders[var.names[0]].display_name,"")
+  value       = try(local.first_folder.display_name, "")
 }
 
 output "folders" {
   description = "Folder resources as list."
-  value       = [for name in var.names : try(google_folder.folders[name], "")]
+  value       = try(local.folders_list, [])
 }
 
 output "folders_map" {
@@ -41,7 +41,7 @@ output "folders_map" {
 
 output "ids" {
   description = "Folder ids."
-  value = { for name in var.names : name => try(google_folder.folders[name].name, "") }
+  value       = { for name in var.names : name => try(google_folder.folders[name].name, "") }
 }
 
 output "names" {
@@ -53,12 +53,12 @@ output "names" {
 
 output "ids_list" {
   description = "List of folder ids."
-  value       = [for name in var.names : try(google_folder.folders[name].name, "")]
+  value       = try(local.folders_list[*].name, [])
 }
 
 output "names_list" {
   description = "List of folder names."
-  value       = [for name in var.names : try(google_folder.folders[name].display_name, "")]
+  value       = try(local.folders_list[*].display_name, [])
 }
 
 output "per_folder_admins" {
@@ -66,4 +66,3 @@ output "per_folder_admins" {
   # value       = var.per_folder_admins
   value = { for k, v in var.per_folder_admins : k => join(",", v.members) }
 }
-
