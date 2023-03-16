@@ -34,7 +34,7 @@ variable "set_roles" {
 variable "per_folder_admins" {
   type = map(object({
     members = list(string)
-    roles   = list(string)
+    roles   = optional(list(string))
   }))
   description = "IAM-style roles per members per folder who will get extended permissions. If roles are not provided for a folder/member combination, the list provided as `folder_admin_roles` will be applied as default."
   default     = {}

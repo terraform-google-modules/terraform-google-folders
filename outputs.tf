@@ -66,3 +66,4 @@ output "per_folder_admins" {
   # value       = var.per_folder_admins
   value = { for k, v in var.per_folder_admins : k => join(",", v.members) }
 }
+
