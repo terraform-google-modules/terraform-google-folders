@@ -16,22 +16,22 @@
 
 output "folder" {
   description = "Folder resource (for single use)."
-  value       = local.first_folder
+  value       = try(google_folder.folders[var.names[0]])
 }
 
 output "id" {
   description = "Folder id (for single use)."
-  value       = local.first_folder.name
+  value       = try(google_folder.folders[var.names[0]].name)
 }
 
 output "name" {
   description = "Folder name (for single use)."
-  value       = local.first_folder.display_name
+  value       = try(google_folder.folders[var.names[0]].display_name)
 }
 
 output "folders" {
   description = "Folder resources as list."
-  value       = local.folders_list
+  value       = [for name in var.names : try(google_folder.folders[name], "")]
 }
 
 output "folders_map" {
@@ -41,9 +41,7 @@ output "folders_map" {
 
 output "ids" {
   description = "Folder ids."
-  value = { for name, folder in google_folder.folders :
-    name => folder.name
-  }
+  value = { for name in var.names : name => try(google_folder.folders[name], "") }
 }
 
 output "names" {
@@ -55,12 +53,12 @@ output "names" {
 
 output "ids_list" {
   description = "List of folder ids."
-  value       = local.folders_list[*].name
+  value       = [for name in var.names : try(google_folder.folders[name].name, "")]
 }
 
 output "names_list" {
   description = "List of folder names."
-  value       = local.folders_list[*].display_name
+  value       = [for name in var.names : try(google_folder.folders[name].display_name, "")]
 }
 
 output "per_folder_admins" {
