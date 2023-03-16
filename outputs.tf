@@ -16,17 +16,17 @@
 
 output "folder" {
   description = "Folder resource (for single use)."
-  value       = try(google_folder.folders[var.names[0]])
+  value       = try(google_folder.folders[var.names[0]],"")
 }
 
 output "id" {
   description = "Folder id (for single use)."
-  value       = try(google_folder.folders[var.names[0]].name)
+  value       = try(google_folder.folders[var.names[0]].name,"")
 }
 
 output "name" {
   description = "Folder name (for single use)."
-  value       = try(google_folder.folders[var.names[0]].display_name)
+  value       = try(google_folder.folders[var.names[0]].display_name,"")
 }
 
 output "folders" {
@@ -41,7 +41,7 @@ output "folders_map" {
 
 output "ids" {
   description = "Folder ids."
-  value = { for name in var.names : name => try(google_folder.folders[name], "") }
+  value = { for name in var.names : name => try(google_folder.folders[name].name, "") }
 }
 
 output "names" {
