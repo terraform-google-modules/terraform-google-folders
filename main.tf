@@ -16,8 +16,8 @@
 
 locals {
   prefix       = var.prefix == "" ? "" : "${var.prefix}-"
-  folders_list = [for name in var.names : google_folder.folders[name]]
-  first_folder = local.folders_list[0]
+  folders_list = [for name in var.names : try(google_folder.folders[name], "")]
+  first_folder = try(local.folders_list[0], {})
   folder_admin_roles_map_data = merge([
     for name, config in var.per_folder_admins : {
       for role in config.roles != null ? config.roles : var.folder_admin_roles : "${name}-${role}" =>
