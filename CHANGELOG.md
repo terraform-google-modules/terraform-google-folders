@@ -7,6 +7,22 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0](https://github.com/terraform-google-modules/terraform-google-folders/compare/v3.1.0...v4.0.0) (2023-06-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* allows roles to be specified per folder per member ([#55](https://github.com/terraform-google-modules/terraform-google-folders/issues/55))
+
+### Features
+
+* allows roles to be specified per folder per member ([#55](https://github.com/terraform-google-modules/terraform-google-folders/issues/55)) ([5f92a9f](https://github.com/terraform-google-modules/terraform-google-folders/commit/5f92a9fd31c8927e5404aef5f37eeda6ed7af1d1))
+
+
+### Bug Fixes
+
+* import errors ([#59](https://github.com/terraform-google-modules/terraform-google-folders/issues/59)) ([0a66585](https://github.com/terraform-google-modules/terraform-google-folders/commit/0a66585988636e34bc9eb91e52aa67cae3ef70de))
+
 ## [3.1.0](https://www.github.com/terraform-google-modules/terraform-google-folders/compare/v3.0.0...v3.1.0) (2021-12-20)
 
 
