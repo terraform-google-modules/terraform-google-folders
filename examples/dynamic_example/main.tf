@@ -25,14 +25,18 @@ locals {
 }
 
 module "folders" {
-  source   = "../../"
+  source  = "terraform-google-modules/folders/google"
+  version = "~> 4.0"
+
   for_each = var.folder_map
   parent   = "organizations/${var.org_id}"
   names    = each.key[*]
 }
 
 module "sub_folders1" {
-  source   = "../../"
+  source  = "terraform-google-modules/folders/google"
+  version = "~> 4.0"
+
   for_each = toset(local.sub_folders1_var)
   parent   = module.folders[element(split("=1>", each.value), 0)].id
   names    = [element(split("=1>", each.value), 1)]
@@ -40,14 +44,18 @@ module "sub_folders1" {
 
 
 module "sub_folders2" {
-  source   = "../../"
+  source  = "terraform-google-modules/folders/google"
+  version = "~> 4.0"
+
   for_each = toset(local.sub_folders2_var)
   parent   = module.sub_folders1[element(split("=2>", each.value), 0)].id
   names    = [element(split("=2>", each.value), 1)]
 }
 
 module "sub_folders3" {
-  source   = "../../"
+  source  = "terraform-google-modules/folders/google"
+  version = "~> 4.0"
+
   for_each = toset(local.sub_folders3_var)
   parent   = module.sub_folders2[element(split("=3>", each.value), 0)].id
   names    = [element(split("=3>", each.value), 1)]
