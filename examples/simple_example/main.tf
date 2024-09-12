@@ -22,6 +22,8 @@ module "folders" {
   set_roles         = true
   all_folder_admins = var.all_folder_admins
 
+  deletion_protection = false
+
   names = [
     "dev",
     "staging",

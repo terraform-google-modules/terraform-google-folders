@@ -64,3 +64,8 @@ variable "folder_admin_roles" {
   ]
 }
 
+variable "deletion_protection" {
+  type        = bool
+  description = "Prevent Terraform from destroying or recreating the folder."
+  default     = true
+}

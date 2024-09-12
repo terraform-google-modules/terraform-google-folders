@@ -33,8 +33,9 @@ locals {
 resource "google_folder" "folders" {
   for_each = toset(var.names)
 
-  display_name = "${local.prefix}${each.value}"
-  parent       = var.parent
+  display_name        = "${local.prefix}${each.value}"
+  parent              = var.parent
+  deletion_protection = var.deletion_protection
 }
 
 # give project creation access to service accounts

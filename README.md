@@ -67,6 +67,7 @@ Functional examples are included in the
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | all\_folder\_admins | List of IAM-style members that will get the extended permissions across all the folders. | `list(string)` | `[]` | no |
+| deletion\_protection | Prevent Terraform from destroying or recreating the folder. | `bool` | `true` | no |
 | folder\_admin\_roles | List of roles that will be applied to a folder if roles are not explictly specified in per\_folder\_admins | `list(string)` | <pre>[<br>  "roles/owner",<br>  "roles/resourcemanager.folderViewer",<br>  "roles/resourcemanager.projectCreator",<br>  "roles/compute.networkAdmin"<br>]</pre> | no |
 | names | Folder names. | `list(string)` | `[]` | no |
 | parent | The resource name of the parent Folder or Organization. Must be of the form folders/folder\_id or organizations/org\_id | `string` | n/a | yes |
