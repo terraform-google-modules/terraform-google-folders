@@ -29,6 +29,6 @@ terraform {
     }
   }
   provider_meta "google" {
-    module_name = "blueprints/terraform/terraform-google-folders/v4.0.1"
+    module_name = "blueprints/terraform/terraform-google-folders/v5.0.0"
   }
 }

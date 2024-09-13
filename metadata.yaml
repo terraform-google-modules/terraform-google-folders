@@ -23,7 +23,7 @@ spec:
   source:
     repo: https://github.com/terraform-google-modules/terraform-google-folders.git
     sourceType: git
-  version: 4.0.1
+  version: 5.0.0
   actuationTool:
     type: Terraform
     version: '>= 1.3.0'
