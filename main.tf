@@ -60,7 +60,7 @@ resource "google_folder" "folders" {
 # https://cloud.google.com/resource-manager/docs/access-control-folders#granting_folder-specific_roles_to_enable_project_creation
 
 resource "google_folder_iam_binding" "owners_combined" {
-  for_each = var.set_roles && length(local.folder_admin_roles_combined) > 0 ? zipmap([for i, v in local.folder_admin_roles_combined : "${i}"], local.folder_admin_roles_combined) : {}
+  for_each = var.set_roles && length(local.folder_admin_roles_combined) > 0 ? zipmap([for i, v in local.folder_admin_roles_combined : i], local.folder_admin_roles_combined) : {}
   folder   = google_folder.folders[each.value.name].name
   role     = each.value.role
 
