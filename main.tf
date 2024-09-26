@@ -18,16 +18,34 @@ locals {
   prefix       = var.prefix == "" ? "" : "${var.prefix}-"
   folders_list = [for name in var.names : try(google_folder.folders[name], "")]
   first_folder = try(local.folders_list[0], {})
-  folder_admin_roles_map_data = merge([
-    for name, config in var.per_folder_admins : {
-      for role in config.roles != null ? config.roles : var.folder_admin_roles : "${name}-${role}" =>
-      {
+
+  # Handle roles for per_folder_admins if provided
+  folder_admin_roles_map_data = flatten([
+    for name, config in var.per_folder_admins : [
+      for role in config.roles != null ? config.roles : var.folder_admin_roles : {
         name    = name,
         role    = role,
-        members = config.members,
+        members = config.members
       }
-    }
-  ]...)
+    ]
+  ])
+
+  # Handle roles for all_folder_admins if provided, applied to all folders
+  folder_admin_roles_all_folders = flatten([
+    for folder in var.names : [
+      for role in var.folder_admin_roles : {
+        name    = folder,
+        role    = role,
+        members = var.all_folder_admins
+      }
+    ]
+    if length(var.all_folder_admins) > 0 # Only add roles if all_folder_admins is provided
+  ])
+
+  # Merge per_folder_admins and all_folder_admins
+  folder_admin_roles_combined = [
+    for role_map in concat(local.folder_admin_roles_map_data, local.folder_admin_roles_all_folders) : role_map
+  ]
 }
 
 resource "google_folder" "folders" {
@@ -41,13 +59,14 @@ resource "google_folder" "folders" {
 # give project creation access to service accounts
 # https://cloud.google.com/resource-manager/docs/access-control-folders#granting_folder-specific_roles_to_enable_project_creation
 
-resource "google_folder_iam_binding" "owners" {
-  for_each = var.set_roles ? local.folder_admin_roles_map_data : {}
+resource "google_folder_iam_binding" "owners_combined" {
+  for_each = var.set_roles && length(local.folder_admin_roles_combined) > 0 ? zipmap([for i, v in local.folder_admin_roles_combined : "${i}"], local.folder_admin_roles_combined) : {}
   folder   = google_folder.folders[each.value.name].name
   role     = each.value.role
 
-  members = concat(
+  members = distinct(concat(
     each.value.members,
-    var.all_folder_admins,
-  )
+    contains(var.names, each.value.name) ? var.all_folder_admins : []
+  ))
 }
+
