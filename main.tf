@@ -61,7 +61,7 @@ resource "google_folder" "folders" {
 # https://cloud.google.com/resource-manager/docs/access-control-folders#granting_folder-specific_roles_to_enable_project_creation
 
 locals {
-  folder_iam_bindings = var.set_roles && length(local.folder_admin_roles_combined) > 0 ? { for i, role in local.folder_admin_roles_combined : "${role.name}-${role.role}" => role }: {}
+  folder_iam_bindings = var.set_roles && length(local.folder_admin_roles_combined) > 0 ? { for i, role in local.folder_admin_roles_combined : "${role.name}-${role.role}" => role } : {}
 }
 
 resource "google_folder_iam_binding" "owners_combined" {
