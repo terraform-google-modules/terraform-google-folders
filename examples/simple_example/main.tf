@@ -16,7 +16,7 @@
 
 module "folders" {
   source  = "terraform-google-modules/folders/google"
-  version = "~> 4.0"
+  version = "~> 5.0"
 
   parent            = "${var.parent_type}/${var.parent_id}"
   set_roles         = true
