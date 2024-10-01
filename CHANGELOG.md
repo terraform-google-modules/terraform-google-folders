@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.1.0](https://github.com/terraform-google-modules/terraform-google-folders/compare/v5.0.0...v5.1.0) (2024-10-01)
+
+
+### Features
+
+* Add support for conditional per_folder_admins and all_folder_adm… ([#88](https://github.com/terraform-google-modules/terraform-google-folders/issues/88)) ([fa587ae](https://github.com/terraform-google-modules/terraform-google-folders/commit/fa587ae8887c834fab14b30bacec91609c74044b))
+
 ## [5.0.0](https://github.com/terraform-google-modules/terraform-google-folders/compare/v4.0.1...v5.0.0) (2024-09-12)
 
 
