@@ -47,7 +47,31 @@ locals {
   folder_admin_roles_combined = [
     for role_map in concat(local.folder_admin_roles_map_data, local.folder_admin_roles_all_folders) : role_map
   ]
+
+  # Data structured for google_folder_iam_binding (per folder + role binding)
+  # Only create data if roles are set and there are combined roles
+  folder_iam_bindings_data = var.set_roles && length(local.folder_admin_roles_combined) > 0 ? {
+    for i, role_map in local.folder_admin_roles_combined :
+    # Use folder name and role for a unique key for bindings
+    "${role_map.name}-${role_map.role}" => role_map
+  } : {}
+
+  # Data structured for google_folder_iam_member (per folder + role + member)
+  # Only create data if roles are set and there are combined roles
+  folder_iam_member_entries = flatten([
+    for role_map in local.folder_admin_roles_combined : [
+      for member in role_map.members : {
+        # Create a unique key combining folder, role, and a hash of the member
+        # SHA1 helps handle complex member strings like service account emails
+        key         = "${role_map.name}-${role_map.role}-${sha1(member)}"
+        folder_name = role_map.name
+        role        = role_map.role
+        member      = member
+      }
+    ]
+  ])
 }
+
 
 resource "google_folder" "folders" {
   for_each = toset(var.names)
@@ -60,18 +84,32 @@ resource "google_folder" "folders" {
 # give project creation access to service accounts
 # https://cloud.google.com/resource-manager/docs/access-control-folders#granting_folder-specific_roles_to_enable_project_creation
 
-locals {
-  folder_iam_bindings = var.set_roles && length(local.folder_admin_roles_combined) > 0 ? { for i, role in local.folder_admin_roles_combined : "${role.name}-${role.role}" => role } : {}
-}
-
+# Use google_folder_iam_binding when mode is "authoritative"
 resource "google_folder_iam_binding" "owners_combined" {
-  for_each = local.folder_iam_bindings
+  # Create this resource only if mode is authoritative and there is data
+  for_each = var.mode == "authoritative" ? local.folder_iam_bindings_data : {}
 
+  # Resolve the folder ID using the folder name from the local
   folder = google_folder.folders[each.value.name].name
   role   = each.value.role
 
-  members = distinct(flatten([
-    each.value.members,
-    length(var.all_folder_admins) > 0 && contains(var.names, each.value.name) ? var.all_folder_admins : []
-  ]))
+  # Use the calculated list of members for this binding
+  # The distinct/flatten logic from the original binding resource
+  # is now implicitly handled by how local.folder_admin_roles_combined is built
+  # and flattened in folder_iam_bindings_data.
+  members = each.value.members
+}
+
+# Use google_folder_iam_member when mode is "additive"
+resource "google_folder_iam_member" "owner_member" {
+  # Create this resource only if mode is additive and there is data
+  for_each = var.mode == "additive" && length(local.folder_iam_member_entries) > 0 ? {
+    for entry in local.folder_iam_member_entries :
+    entry.key => entry
+  } : {}
+
+  # Resolve the folder ID using the folder name from the local entry
+  folder = google_folder.folders[each.value.folder_name].name
+  role   = each.value.role
+  member = each.value.member
 }

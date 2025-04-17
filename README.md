@@ -69,6 +69,7 @@ Functional examples are included in the
 | all\_folder\_admins | List of IAM-style members that will get the extended permissions across all the folders. | `list(string)` | `[]` | no |
 | deletion\_protection | Prevent Terraform from destroying or recreating the folder. | `bool` | `true` | no |
 | folder\_admin\_roles | List of roles that will be applied to a folder if roles are not explictly specified in per\_folder\_admins | `list(string)` | <pre>[<br>  "roles/owner",<br>  "roles/resourcemanager.folderViewer",<br>  "roles/resourcemanager.projectCreator",<br>  "roles/compute.networkAdmin"<br>]</pre> | no |
+| mode | Mode for adding the IAM policies/bindings. 'authoritative' uses google\_folder\_iam\_binding (replaces existing members for the role); 'additive' uses google\_folder\_iam\_member (adds members without removing others). | `string` | `"authoritative"` | no |
 | names | Folder names. | `list(string)` | `[]` | no |
 | parent | The resource name of the parent Folder or Organization. Must be of the form folders/folder\_id or organizations/org\_id | `string` | n/a | yes |
 | per\_folder\_admins | IAM-style roles per members per folder who will get extended permissions. If roles are not provided for a folder/member combination, the list provided as `folder_admin_roles` will be applied as default. | <pre>map(object({<br>    members = list(string)<br>    roles   = optional(list(string))<br>  }))</pre> | `{}` | no |
