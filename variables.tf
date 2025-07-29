@@ -69,3 +69,9 @@ variable "deletion_protection" {
   description = "Prevent Terraform from destroying or recreating the folder."
   default     = true
 }
+
+variable "tags" {
+  type        = map(string)
+  description = "A map of tags to assign to the folders."
+  default     = {}
+}

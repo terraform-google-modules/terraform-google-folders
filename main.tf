@@ -55,6 +55,7 @@ resource "google_folder" "folders" {
   display_name        = "${local.prefix}${each.value}"
   parent              = var.parent
   deletion_protection = var.deletion_protection
+  tags                = var.tags
 }
 
 # give project creation access to service accounts
