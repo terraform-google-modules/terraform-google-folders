@@ -69,3 +69,14 @@ variable "deletion_protection" {
   description = "Prevent Terraform from destroying or recreating the folder."
   default     = true
 }
+
+variable "mode" {
+  description = "Mode for adding the IAM policies/bindings. 'authoritative' uses google_folder_iam_binding (replaces existing members for the role); 'additive' uses google_folder_iam_member (adds members without removing others)."
+  type        = string
+  default     = "authoritative"
+
+  validation {
+    condition     = contains(["authoritative", "additive"], var.mode)
+    error_message = "The mode variable must be either 'authoritative' or 'additive'."
+  }
+}
