@@ -24,7 +24,7 @@ resource "google_folder" "ephemeral" {
 
 module "folders-project" {
   source  = "terraform-google-modules/project-factory/google"
-  version = "~> 17.0"
+  version = "~> 18.0"
 
   name              = "ci-folders"
   random_project_id = "true"
