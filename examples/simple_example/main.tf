@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-# test comment 9
+# test comment 10
 module "folders" {
   source  = "terraform-google-modules/folders/google"
   version = "~> 5.0"
