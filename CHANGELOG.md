@@ -7,6 +7,13 @@ The format is based on
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.2.0](https://github.com/terraform-google-modules/terraform-google-folders/compare/v5.1.0...v5.2.0) (2026-09-09)
+
+
+### Features
+
+* **deps:** Update Terraform Google Provider to v8 ([#106](https://github.com/terraform-google-modules/terraform-google-folders/issues/106)) ([50e0278](https://github.com/terraform-google-modules/terraform-google-folders/commit/50e0278d7a57e9aebf44022c637e628fa51c7234))
+
 ## [5.1.0](https://github.com/terraform-google-modules/terraform-google-folders/compare/v5.0.0...v5.1.0) (2025-08-28)
 
 
